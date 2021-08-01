@@ -56,6 +56,8 @@ var correspondanceJson = JSON.parse(`
 }
 ```
 
+## Add to OBS
+
 Then as a last step, add the `myTwitchVideoAndSoundCommands.html` as an internet source in OBS:
 
 ![image](https://user-images.githubusercontent.com/17751686/127782022-b564ccdc-45b1-4810-9643-6fcc72134265.png)
