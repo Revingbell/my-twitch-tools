@@ -32,7 +32,8 @@ var correspondanceJson = JSON.parse(`
 		{
 			"command": 	"thereyouare",
 			"file": 	"there_you_are.wav",
-			"delay": 	"30" 
+			"delay": 	"30",
+			"volume": 	"0.5"
 		}
 	]
 }
