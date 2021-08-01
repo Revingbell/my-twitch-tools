@@ -1,0 +1,11 @@
+#my-videos {
+	background-color: ; /*if empty background will be transparent*/
+	color: white;
+	position: absolute;
+	bottom:0;
+	padding: 10px;
+}
+
+.hidden {
+	display: none;
+}
