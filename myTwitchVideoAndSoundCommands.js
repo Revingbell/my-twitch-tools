@@ -1,5 +1,8 @@
 $(function(){
 
+	/*
+		Search Command for Correspondance in Json
+	*/
 	function findCorrespondance (commandString) {
 		for ( var i = 0; i < correspondanceJson.videos.length; i++ ) {
 			if ( correspondanceJson.videos[i].command === commandString ) {
@@ -14,12 +17,10 @@ $(function(){
 		}
 
 	}
-	function sanitizeString(string) {
-		return string.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-		   return '&#'+i.charCodeAt(0)+';';
-		});
-	}
 
+	/*
+		Append Video Element
+	*/
 	function appendVideo(video) {
 		if ( $('#'+video.command).length === 0 ) {
 			$('#my-videos').append(`
@@ -28,13 +29,11 @@ $(function(){
 			$('#' + video.command)[0].volume = video.volume;			
 			removeVideo(video);
 		}
-		//  else {
-		// 	setTimeout(function(){
-		// 		appendVideo(video);
-		// 	},100);
-		// }
 	}
 
+	/*
+		Append Sound Element
+	*/
 	function appendSound(sound) {
 		if ( $('#'+sound.command).length === 0 ) {
 			$('#my-sounds').append(`
@@ -45,6 +44,9 @@ $(function(){
 		}
 	}
 
+	/*
+		Hide Video Element after its duration, then after delay remove it for another use
+	*/
 	function removeVideo(video) {
 		setTimeout(function(){
 			let videoDuration = ($('#' + video.command)[0].duration*1000) - 500;
@@ -59,21 +61,21 @@ $(function(){
 		},500);
 	}
 
+	/*
+		Remove Sound Element after delay to enable another use
+	*/
 	function removeSound(sound) {
 		setTimeout(function(){
 			let soundDuration = ($('#' + sound.command)[0].duration*1000) - 500;
-			
-			setTimeout(function() {
-				$($('#' + sound.command)[0]).addClass('hidden');
-
-				setTimeout(function(){
-					$('#' + sound.command)[0].remove();
-				}, sound.delay * 1000 - soundDuration );
-			}, soundDuration);
+			setTimeout(function(){
+				$('#' + sound.command)[0].remove();
+			}, sound.delay * 1000 - soundDuration );
 		},500);
 	}
 
-	// Build client connection
+	/*
+		Build client connection
+	*/
 	const client = new tmi.Client({
 		connection: {
 			secure: true,
@@ -82,14 +84,18 @@ $(function(){
 		channels: [ streamer ]
 	});
 
+	// Connect
 	client.connect();
 
-	// For each message do:
+	/*
+		For each message do:
+	*/
 	client.on('message', (channel, tags, message, self) => {
 		/* 
 			Find out if this is a command (starting with !), if not do nothing
 		*/
 		if ( /^!.*/.test(message) ) {
+			// This is a command, retrieve it and check for correspondance
 			let command = message.substr(1).split(' ')[0];
 			findCorrespondance(command);
 		}		
