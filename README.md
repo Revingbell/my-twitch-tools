@@ -1,15 +1,19 @@
 ﻿# my-twitch-video-and-sound-commands
 
 ## How to use:
+### Change streamer
 In the file `correspondance.js`, modify this line:
 ```js
 var streamer = 'revingbell';
 ```
 Put in your streamer id inside the quotes.
+You will only have to do this once.
 
+### Add video and sound files
 Put all video files in the `videos` folder, and all sounds in the `sounds` folder.
 
-Then, still in the file `correspondance.js` the json string is described as follows:
+### Reference commands
+Still in the file `correspondance.js` the json string is described as follows:
 ```js
 var correspondanceJson = JSON.parse(`
 {
@@ -51,3 +55,7 @@ var correspondanceJson = JSON.parse(`
 	]
 }
 ```
+
+Then as a last step, add the `myTwitchVideoAndSoundCommands.html` as an internet source in OBS:
+
+![image](https://user-images.githubusercontent.com/17751686/127782022-b564ccdc-45b1-4810-9643-6fcc72134265.png)
