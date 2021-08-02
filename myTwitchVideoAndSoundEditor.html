@@ -10,11 +10,12 @@
 	<body>
 		<h1>
 			My Video and Sound Editor
+			<button type="button" class="btn btn-success" onclick="exportFile()">Export</button>
 		</h1>
 		<form>
 			<div class="row form-group">
 				<div class="col-3">
-					<label>
+					<label class="important">
 						Twitch user tag
 					</label>
 				</div>
@@ -27,25 +28,28 @@
 			</h4>
 			<div id='videos'>
 				<div class="text-center row">
-					<div class="col-5">
-						<label>
+					<div class="col-4">
+						<label class="important">
 							Command
 						</label>
 					</div>
 					<div class="col-5">
-						<label>
+						<label class="important">
 							File Name
 						</label>
 					</div>
 					<div class="col-1">
-						<label>
+						<label class="important">
 							Delay
 						</label>
 					</div>
 					<div class="col-1">
-						<label>
+						<label class="important">
 							Volume
 						</label>
+					</div>
+					<div class="col-1">
+						<button class="btn btn-outline-primary" type="button" onclick="addVideo()">+</button>
 					</div>
 				</div>
 			</div>
@@ -54,18 +58,18 @@
 			</h4>
 			<div id='sounds'>
 				<div class="text-center row">
-					<div class="col-5">
-						<label>
+					<div class="col-4">
+						<label class="important">
 							Command
 						</label>
 					</div>
 					<div class="col-5">
-						<label>
+						<label class="important">
 							File Name
 						</label>
 					</div>
 					<div class="col-1">
-						<label>
+						<label class="important">
 							Delay
 						</label>
 					</div>
@@ -73,6 +77,9 @@
 						<label>
 							Volume
 						</label>
+					</div>
+					<div class="col-1">
+						<button class="btn btn-outline-primary" type="button" onclick="addSound()">+</button>
 					</div>
 				</div>
 			</div>
