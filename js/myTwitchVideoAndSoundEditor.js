@@ -59,7 +59,7 @@ var correspondanceJson = JSON.parse(\`
         if ( command === "" || file === "" || delay === "" || volume === "" ) {
             return true;
         }
-        
+
         text += `
         {
             "command" : "` + command + `",
@@ -78,7 +78,7 @@ var correspondanceJson = JSON.parse(\`
 }
 \`);`;
 
-    download("correspondance.js",text);
+    download("config.js",text);
 }
 
 function addVideo() {
