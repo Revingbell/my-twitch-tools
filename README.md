@@ -13,48 +13,11 @@ You will only have to do this once.
 Put all video files in the `videos` folder, and all sounds in the `sounds` folder.
 
 ### Reference commands
-Still in the file `correspondance.js` the json string is described as follows:
-```js
-var correspondanceJson = JSON.parse(`
-{
-	"videos": [
-		{
-			"command": 	"societe", // command as it will be typed in the chat
-			"file":		"societe.mp4", // name of the associated video file you've put in the videos folder
-			"delay": 	"60", // duration before next use in seconds
-			"volume": 	"0.5" // volume value between 0 and 1
-		},
-		{
-			"command": 	"societe2",
-			"file":		"societe.mp4",
-			"delay": 	"60",
-			"volume": 	"1"
-		},
-    ...
-    {
-    ...
-    } // no "," after the last entry
-	],
-	"sounds": [
-		{
-			"command": 	"thereyouare", // command as it will be typed in the chat
-			"file": 	"there_you_are.wav", // name of the associated sound file you've put in the sounds folder
-			"delay": 	"30", // duration before next use in seconds
-			"volume": 	"0.5" // volume value between 0 and 1
-		},    
-		{
-			"command": 	"thereyouare2",
-			"file": 	"there_you_are.wav",
-			"delay": 	"3000",
-			"volume": 	"0.7"
-		},
-    ...
-    {
-    ...
-    } // no "," after the last entry
-	]
-}
-```
+Open the file `myTwitchVideoAndSoundEditor.html` with your preferred web browser (Tested on Firefox).
+
+![image](https://user-images.githubusercontent.com/17751686/127928742-892aff44-5967-40ff-9ab8-b1baf9de480d.png)
+
+Manage your videos and sounds the hit the export button, save the `correspondance.js` file inside the `js` folder (replace your previous version by this new one).
 
 ## Add to OBS
 
