@@ -14,17 +14,26 @@ function download(filename, text) {
 function exportFile() {
     let text;
 
-    text = 
-`var streamer = "` + $('#twitch-user-tag').val() + `";
+    text =
+`var user = "` + $('#twitch-user').val() + `";
+var pwd = "` + $('#twitch-pwd').val() + `";
+var channelName = "` + $('#twitch-channel').val() + `";
 
-var correspondanceJson = JSON.parse(\`
-{
-    "videos": [`;
+var pauseVideos = "` + $('#pause-videos').val() + `";
+var resumeVideos = "` + $('#resume-videos').val() + `";
+var globalVideoDelay = "` + $('#global-video-delay').val() + `";
+
+var pauseSounds = "` + $('#pause-sounds').val() + `";
+var resumeSounds = "` + $('#resume-sounds').val() + `";
+var globalSoundDelay = "` + $('#global-sound-delay').val() + `";
+
+var videosJson = JSON.parse(\`
+[`;
 
     let videos = $('.video');
     videos.each(function(i,e){
-        let command = $(e).find('.video-command').val();
-        let file = $(e).find('.video-file-name').val();
+        let command = $(e).find('.video-command').val().trim();
+        let file = $(e).find('.video-file-name').val().trim();
         let delay = $(e).find('.video-delay').val();
         let volume = $(e).find('.video-volume').val();
 
@@ -33,12 +42,12 @@ var correspondanceJson = JSON.parse(\`
         }
 
         text += `
-        {
-            "command" : "` + command + `",
-            "file" : "` + file + `",
-            "delay" : "` + delay + `",
-            "volume" : "` + volume + `"
-        }`;
+    {
+        "command" : "` + command + `",
+        "file" : "` + file + `",
+        "delay" : "` + delay + `",
+        "volume" : "` + volume + `"
+    }`;
 
         if ( i !== videos.length - 1 ) {
             text += `,`;
@@ -46,13 +55,15 @@ var correspondanceJson = JSON.parse(\`
     });
 
     text += `
-    ],
-    "sounds": [`;
+]\`);
+
+var soundsJson = JSON.parse(\`
+[`;
 
     let sounds = $('.sound');
     sounds.each(function(i,e){
-        let command = $(e).find('.sound-command').val();
-        let file = $(e).find('.sound-file-name').val();
+        let command = $(e).find('.sound-command').val().trim();
+        let file = $(e).find('.sound-file-name').val().trim();
         let delay = $(e).find('.sound-delay').val();
         let volume = $(e).find('.sound-volume').val();
 
@@ -61,12 +72,12 @@ var correspondanceJson = JSON.parse(\`
         }
 
         text += `
-        {
-            "command" : "` + command + `",
-            "file" : "` + file + `",
-            "delay" : "` + delay + `",
-            "volume" : "` + volume + `"
-        }`;
+    {
+        "command" : "` + command + `",
+        "file" : "` + file + `",
+        "delay" : "` + delay + `",
+        "volume" : "` + volume + `"
+    }`;
 
         if ( i !== sounds.length - 1 ) {
             text += `,`;
@@ -74,8 +85,34 @@ var correspondanceJson = JSON.parse(\`
     });
 
     text += `
-    ]
-}
+]
+\`);
+
+var botCommandsJson = JSON.parse(\`
+[`;
+
+    let botCommands = $('.bot-command');
+    botCommands.each(function(i,e){
+        let commandString = $(e).find('.bot-command-string').val().trim();
+        let commandOutput = $(e).find('.bot-command-output').val().trim();
+
+        if ( commandString === "" || commandOutput === "") {
+            return true;
+        }
+
+        text += `
+    {
+        "commandString" : "` + commandString + `",
+        "commandOutput" : "` + commandOutput + `"
+    }`;
+
+        if ( i !== botCommands.length - 1 ) {
+            text += `,`;
+        }
+    });
+
+    text += `
+]
 \`);`;
 
     download("config.js",text);
@@ -83,7 +120,7 @@ var correspondanceJson = JSON.parse(\`
 
 function addVideo() {
     $('#videos').append(`
-        <div class="text-center form-group row video">
+        <div class="text-center form-group row align-items-center video">
             <div class="col-4">
                 <input class="form-control video-command" type="text"value=""/>
             </div>
@@ -104,7 +141,7 @@ function addVideo() {
 
 function addSound() {
     $('#sounds').append(`
-        <div class="text-center form-group row sound">
+        <div class="text-center form-group row align-items-center sound">
             <div class="col-4">
                 <input class="form-control sound-command" type="text" value="" />
             </div>
@@ -123,27 +160,53 @@ function addSound() {
         </div>`);
 }
 
+function addBotCommand() {
+    $('#bot-commands').append(`
+        <div class="text-center form-group row align-items-center bot-command">
+            <div class="col-4">
+                <input class="form-control bot-command-string" type="text" value="" />
+            </div>
+            <div class="col-7">
+                <textarea class="form-control bot-command-output" value="">
+                </textarea>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
+            </div>
+        </div>`);
+}
+
 $(function(){
 
-    $('#twitch-user-tag').val(streamer);
-    
-    let videos = correspondanceJson.videos;
-    let sounds = correspondanceJson.sounds;
+    /*
+        Global Parameters
+    */
+    $('#twitch-user').val(user);
+    $('#twitch-pwd').val(pwd);
+    $('#twitch-channel').val(channelName);
 
-    for ( let i = 0; i < videos.length; i++ ){
+
+    /*
+        Video Parameters
+    */
+    $('#pause-videos').val(pauseVideos);
+    $('#resume-videos').val(resumeVideos);
+    $('#global-video-delay').val(globalVideoDelay);
+
+    for ( let i = 0; i < videosJson.length; i++ ){
         $('#videos').append(`
-            <div class="text-center form-group row video">
+            <div class="text-center form-group row align-items-center video">
                 <div class="col-4">
-                    <input class="form-control video-command" type="text"value="` + videos[i].command + `"/>
+                    <input class="form-control video-command" type="text"value="` + videosJson[i].command + `"/>
                 </div>
                 <div class="col-5">
-                    <input class="form-control video-file-name" type="text" value="` + videos[i].file + `"/>
+                    <input class="form-control video-file-name" type="text" value="` + videosJson[i].file + `"/>
                 </div>
                 <div class="col-1">
-                    <input class="form-control video-delay" type="text" value="` + videos[i].delay + `"/>
+                    <input class="form-control video-delay" type="text" value="` + videosJson[i].delay + `"/>
                 </div>
                 <div class="col-1">
-                    <input class="form-control video-volume" type="text" value="` + videos[i].volume + `"/>
+                    <input class="form-control video-volume" type="text" value="` + videosJson[i].volume + `"/>
                 </div>
                 <div class="col-1">
                     <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
@@ -151,20 +214,46 @@ $(function(){
             </div>`);
     }
 
-    for ( let i = 0; i < sounds.length; i++ ) {
+    /*
+        Sound Parameters
+    */
+    $('#pause-videos').val(pauseVideos);
+    $('#resume-videos').val(resumeVideos);
+    $('#global-video-delay').val(globalVideoDelay);
+
+    for ( let i = 0; i < soundsJson.length; i++ ) {
         $('#sounds').append(`
-            <div class="text-center form-group row sound">
+            <div class="text-center form-group row align-items-center sound">
                 <div class="col-4">
-                    <input class="form-control sound-command" type="text" value="` + sounds[i].command + `" />
+                    <input class="form-control sound-command" type="text" value="` + soundsJson[i].command + `" />
                 </div>
                 <div class="col-5">
-                    <input class="form-control sound-file-name" type="text" value="` + sounds[i].file + `" />
+                    <input class="form-control sound-file-name" type="text" value="` + soundsJson[i].file + `" />
                 </div>
                 <div class="col-1">
-                    <input class="form-control sound-delay" type="text" value="` + sounds[i].delay + `" />
+                    <input class="form-control sound-delay" type="text" value="` + soundsJson[i].delay + `" />
                 </div>
                 <div class="col-1">
-                    <input class="form-control sound-volume" type="text" value="` + sounds[i].volume + `" />
+                    <input class="form-control sound-volume" type="text" value="` + soundsJson[i].volume + `" />
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
+                </div>
+            </div>`);
+    }
+
+    /*
+        Bot Commands
+    */
+    for ( let i = 0; i < botCommandsJson.length; i++ ) {
+        $('#bot-commands').append(`
+            <div class="text-center form-group row align-items-center bot-command">
+                <div class="col-4">
+                    <input class="form-control bot-command-string" type="text" value="` + botCommandsJson[i].commandString + `" />
+                </div>
+                <div class="col-5">
+                    <textarea class="form-control bot-command-output" value="` + botCommandsJson[i].commandOutput + `">
+                    </textarea>
                 </div>
                 <div class="col-1">
                     <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>

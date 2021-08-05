@@ -1,3 +1,16 @@
 body {
 	margin: 0 20px 0 10px;
 }
+
+.important {
+	font-weight: bold;
+}
+
+.row {
+	margin: 10px 0;
+}
+
+.btn {
+	min-width: 40px;
+	min-height: 40px;
+}

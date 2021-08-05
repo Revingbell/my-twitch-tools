@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>
@@ -12,22 +13,84 @@
 			My Video and Sound Editor
 			<button type="button" class="btn btn-success" onclick="exportFile()">Export</button>
 		</h1>
-		<form>
-			<div class="row form-group">
-				<div class="col-3">
+		<div id="global-menu">
+			<h4>
+				Global Parameters
+			</h4>
+			<hr>
+			<div class="row form-group align-items-center">
+				<div class="col-4">
 					<label class="important">
-						Twitch user tag
+						Chat User
 					</label>
 				</div>
-				<div class="col-9">
-					<input type="text" class="form-control" name="twitch-user" id="twitch-user-tag"/>
+				<div class="col-4">
+					<input type="text" class="form-control" id="twitch-user"/>
+				</div>
+			</div>
+			<div class="row form-group align-items-center">
+				<div class="col-4">
+					<label class="important">
+						Chat User Oauth Password String
+					</label>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" id="twitch-pwd"/>
+				</div>
+				<div class="col-4">
+					<a href="https://twitchapps.com/tmi/" target="_blank">
+						Get your oauth password key
+					</a>
+				</div>
+			</div>
+			<div class="row form-group align-items-center">
+				<div class="col-4">
+					<label class="important">
+						Twitch Channel
+					</label>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" id="twitch-channel"/>
+				</div>
+			</div>
+		</div>
+		<div id="video-menu">
+			<div class="row form-group align-items-center">
+				<div class="col-4">
+					<label class="important">
+						Pause Videos Command
+					</label>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" id="pause-videos"/>
+				</div>
+			</div>
+			<div class="row form-group align-items-center">
+				<div class="col-4">
+					<label class="important">
+						Resume Videos Command
+					</label>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" id="resume-videos"/>
+				</div>
+			</div>
+			<div class="row form-group align-items-center">
+				<div class="col-4">
+					<label class="important">
+						Global Video Delay
+					</label>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" id="global-video-delay"/>
 				</div>
 			</div>
 			<h4>
 				Videos
 			</h4>
-			<div id='videos'>
-				<div class="text-center row">
+			<hr>
+			<div id="videos">
+				<div class="text-center row header">
 					<div class="col-4">
 						<label class="important">
 							Command
@@ -53,11 +116,44 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div id="sound-menu">
+			<div class="row form-group align-items-center">
+				<div class="col-4">
+					<label class="important">
+						Pause Sounds Command
+					</label>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" id="pause-sounds"/>
+				</div>
+			</div>
+			<div class="row form-group align-items-center">
+				<div class="col-4">
+					<label class="important">
+						Resume Sounds Command
+					</label>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" id="resume-sounds"/>
+				</div>
+			</div>
+			<div class="row form-group align-items-center">
+				<div class="col-4">
+					<label class="important">
+						Global Sounds Delay
+					</label>
+				</div>
+				<div class="col-4">
+					<input type="text" class="form-control" id="global-sound-delay"/>
+				</div>
+			</div>
 			<h4>
 				Sounds
 			</h4>
-			<div id='sounds'>
-				<div class="text-center row">
+			<hr>
+			<div id="sounds">
+				<div class="text-center row header">
 					<div class="col-4">
 						<label class="important">
 							Command
@@ -74,7 +170,7 @@
 						</label>
 					</div>
 					<div class="col-1">
-						<label>
+						<label class="important">
 							Volume
 						</label>
 					</div>
@@ -83,6 +179,29 @@
 					</div>
 				</div>
 			</div>
-		</form>
+		</div>
+		<div id="bot-command-menu">
+			<h4>
+				Bot Commands
+			</h4>
+			<hr>
+			<div id="bot-commands">
+				<div class="text-center row header">
+					<div class="col-4">
+						<label class="important">
+							Command
+						</label>
+					</div>
+					<div class="col-7">
+						<label class="important">
+							Output
+						</label>
+					</div>
+					<div class="col-1">
+						<button class="btn btn-outline-primary" type="button" onclick="addBotCommand()">+</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
