@@ -32,9 +32,9 @@ class videoQueue {
 		this.flush();
 	}
 
-	pause() { this.paused = true; console.log('pause');}
+	pause() { this.paused = true; }
 
-	resume() { this.paused = false;	console.log('resume');}
+	resume() { this.paused = false;	}
 
 	flush() { this.q = []; }
 

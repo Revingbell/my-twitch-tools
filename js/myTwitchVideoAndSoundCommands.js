@@ -71,17 +71,30 @@ $(function(){
 	/*
 		Build client connection
 	*/
-	const client = new tmi.Client({
-		connection: {
-			secure: true,
-			reconnect: true
-		},
-		identity: {
-			username: user,
-			password: pwd
-		},
-		channels: [ channelName ]
-	});
+	let clientOptions;
+	if ( user === "" || pwd === "" ) {
+		clientOptions = {
+			connection: {
+				secure: true,
+				reconnect: true
+			},
+			channels: [ channelName ]
+		};
+	} else {
+		clientOptions = {
+			connection: {
+				secure: true,
+				reconnect: true
+			},
+			identity: {
+				username: user,
+				password: pwd
+			},
+			channels: [ channelName ]
+		};
+	}
+
+	const client = new tmi.client(clientOptions);
 
 	// Connect
 	client.connect();
