@@ -1,6 +1,11 @@
 ﻿# my-twitch-video-and-sound-commands
 
 ## How to use:
+
+### Update Config File From v1.1.0
+Put your old `config.js` file inside the `js` folder, then open the file `updateConfigFile.html` in the web browser of your choice.  
+You will be prompted to download the updated version of the file, save it inside the `js` folder. You can start using v1.2.0.
+
 ### Add video and sound files
 Put all video files in the `videos` folder, and all sounds in the `sounds` folder.
 
