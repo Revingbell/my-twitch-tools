@@ -1,5 +1,5 @@
 ﻿# my-twitch-video-and-sound-commands
-[Download Latest Release](https://github.com/Revingbell/my-twitch-video-and-sound-commands/releases)  
+[Download Latest Release](https://github.com/Revingbell/my-twitch-video-and-sound-commands/releases) (download the archive of your choice and unpack it where you want in your filesystem).
 
 *Read this in another language: [English](README.md), [Français](README.fr.md).*
 
