@@ -4,7 +4,7 @@
 
 ## Utilisation:
 
-### Update Config File From v1.1.0
+### Mettre à jour votre fichier de config de la v1.1.0
 Mettez votre ancien fichier `config.js` dans le dossier `js`, puis ouvrez le fichier `updateConfigFile.html` avec le navigateur web de votre choix (Testé sur Chrome et Firefox).  
 Une fenêtre de téléchargement vous proposera alors de télécharger la nouvelle version du fichier, enregistrez le en remplaçant l'ancienne version dans le dossier `js`.  
 Vous pouvez maintenant commencer à utiliser la v1.2.0.
