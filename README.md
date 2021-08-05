@@ -1,6 +1,6 @@
 ﻿# my-twitch-video-and-sound-commands
 
-*Read this in: [English](README.md), [French](README.fr.md).*
+*Read this in another language: [English](README.md), [Français](README.fr.md).*
 
 ## How to use:
 
@@ -11,8 +11,9 @@ You will be prompted to download the updated version of the file, save it inside
 ### Add video and sound files
 Put all video files in the `videos` folder, and all sounds in the `sounds` folder.
 
-### Reference commands
-Open the file `myTwitchVideoAndSoundEditor.html` with your preferred web browser (Tested on Firefox).
+### Parametrize the program
+Open the file `myTwitchVideoAndSoundEditor.html` with your preferred web browser (Tested on Firefox).  
+
 #### Global Parameters
 ![image](https://user-images.githubusercontent.com/17751686/128336117-d0a7a07d-1f85-469d-af53-374cd0847b49.png)
 - `Chat User` : can be your stream account, or an account you created specifically for your bot. This parameter is required for Bot Commands.
