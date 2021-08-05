@@ -217,9 +217,9 @@ $(function(){
     /*
         Sound Parameters
     */
-    $('#pause-videos').val(pauseVideos);
-    $('#resume-videos').val(resumeVideos);
-    $('#global-video-delay').val(globalVideoDelay);
+    $('#pause-sounds').val(pauseSounds);
+    $('#resume-sounds').val(resumeSounds);
+    $('#global-sound-delay').val(globalSoundDelay);
 
     for ( let i = 0; i < soundsJson.length; i++ ) {
         $('#sounds').append(`
@@ -252,8 +252,9 @@ $(function(){
                     <input class="form-control bot-command-string" type="text" value="` + botCommandsJson[i].commandString + `" />
                 </div>
                 <div class="col-5">
-                    <textarea class="form-control bot-command-output" value="` + botCommandsJson[i].commandOutput + `">
-                    </textarea>
+                    <textarea class="form-control bot-command-output">`
+                         + botCommandsJson[i].commandOutput
+                    +`</textarea>
                 </div>
                 <div class="col-1">
                     <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
