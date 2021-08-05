@@ -176,6 +176,20 @@ function addBotCommand() {
         </div>`);
 }
 
+function switchMenu(selectedMenu) {
+    let selectedId = selectedMenu.attr('display-target');
+    let menus = $('.nav-bar a').not('#export');
+
+    /* Reset Menus */
+    menus.removeClass('active');
+    selectedMenu.addClass('active');
+
+    /* Reset Content Parts display*/
+    $('.content-part').removeClass('d-none')
+    $('.content-part').not('#' + selectedId).addClass('d-none');
+
+}
+
 $(function(){
 
     /*
@@ -251,7 +265,7 @@ $(function(){
                 <div class="col-4">
                     <input class="form-control bot-command-string" type="text" value="` + botCommandsJson[i].commandString + `" />
                 </div>
-                <div class="col-5">
+                <div class="col-7">
                     <textarea class="form-control bot-command-output">`
                          + botCommandsJson[i].commandOutput
                     +`</textarea>

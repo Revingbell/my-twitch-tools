@@ -9,11 +9,14 @@
 		<link rel="stylesheet" type="text/css" href="css/myTwitchVideoAndSoundEditor.css"></link>
 	</head>
 	<body>
-		<h1>
-			My Video and Sound Editor
-			<button type="button" class="btn btn-success" onclick="exportFile()">Export</button>
-		</h1>
-		<div id="global-menu">
+		<div class="nav-bar">
+		  <a display-target="global-menu" class="active" onclick="switchMenu($(this))">Global Parameters</a>
+		  <a display-target="videos-menu" onclick="switchMenu($(this))">Videos</a>
+		  <a display-target="sounds-menu" onclick="switchMenu($(this))">Sounds</a>
+		  <a display-target="bot-commands-menu" onclick="switchMenu($(this))">Bot Commands</a>
+		  <a id="export" onclick="exportFile()">Export</a>
+		</div>
+		<div id="global-menu" class="content-part">
 			<h4>
 				Global Parameters
 			</h4>
@@ -54,7 +57,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="video-menu">
+		<div id="videos-menu" class="content-part d-none">
 			<div class="row form-group align-items-center">
 				<div class="col-4">
 					<label class="important">
@@ -112,12 +115,12 @@
 						</label>
 					</div>
 					<div class="col-1">
-						<button class="btn btn-outline-primary" type="button" onclick="addVideo()">+</button>
+						<button class="btn btn-outline-primary" type="button" onclick="addVideo()">Add</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="sound-menu">
+		<div id="sounds-menu" class="content-part d-none">
 			<div class="row form-group align-items-center">
 				<div class="col-4">
 					<label class="important">
@@ -175,12 +178,12 @@
 						</label>
 					</div>
 					<div class="col-1">
-						<button class="btn btn-outline-primary" type="button" onclick="addSound()">+</button>
+						<button class="btn btn-outline-primary" type="button" onclick="addSound()">Add</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="bot-command-menu">
+		<div id="bot-commands-menu" class="content-part d-none">
 			<h4>
 				Bot Commands
 			</h4>
@@ -198,7 +201,7 @@
 						</label>
 					</div>
 					<div class="col-1">
-						<button class="btn btn-outline-primary" type="button" onclick="addBotCommand()">+</button>
+						<button class="btn btn-outline-primary" type="button" onclick="addBotCommand()">Add</button>
 					</div>
 				</div>
 			</div>

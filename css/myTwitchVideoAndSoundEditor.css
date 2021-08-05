@@ -1,5 +1,7 @@
 body {
-	margin: 0 20px 0 10px;
+	background-color: #ECECEC;
+	color: #660064;
+	padding: 0;
 }
 
 .important {
@@ -13,4 +15,38 @@ body {
 .btn {
 	min-width: 40px;
 	min-height: 40px;
+}
+
+.nav-bar {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.nav-bar a {
+  float: left;
+  color:  #CCA7CC !important;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.nav-bar a:hover {
+  background-color: #CCA7CC;
+  color: black !important;
+  cursor: pointer;
+}
+
+.nav-bar a.active {
+  background-color: #800080;
+  color: white !important;
+}
+
+#export {
+	background-color: #198754;
+	color: white !important;
+}
+
+.content-part {
+	margin: 20px;
 }
