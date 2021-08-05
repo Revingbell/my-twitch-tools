@@ -1,4 +1,5 @@
 ﻿# my-twitch-video-and-sound-commands
+[Download Latest Release](https://github.com/Revingbell/my-twitch-video-and-sound-commands/releases)  
 
 *Read this in another language: [English](README.md), [Français](README.fr.md).*
 
