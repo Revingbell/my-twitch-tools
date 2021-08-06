@@ -16,7 +16,7 @@ Put all video files in the `videos` folder, and all sounds in the `sounds` folde
 Open the file `myCommandEditor.html` with your preferred web browser (Tested on Firefox).  
 
 #### Global Parameters
-![image](https://user-images.githubusercontent.com/17751686/128336117-d0a7a07d-1f85-469d-af53-374cd0847b49.png)
+![image](https://user-images.githubusercontent.com/17751686/128506855-18990827-33b2-4125-b309-81b9c533c354.png)
 - `Twitch Channel` : Name of the channel. The program will look for commands starting with a ! in this channel's chat.
 Mandatory for this program to work.
 - `Chat User` : Name of the user (you or a bot account created specifically) that will write in chat.
@@ -24,7 +24,7 @@ Required only for `Bot Commands` to work.
 - `Oauth Password String` : Connect to the link: [Get your oauth password key](https://twitchapps.com/tmi/) with the account specified as 'Chat User' to get the authentication key. Never provide this key to anyone. In case of doubt, go back to the link to generate a new one and invalidate the old one. Required only for `Bot Commands` to work.
 
 #### Video Parameters
-![image](https://user-images.githubusercontent.com/17751686/128336328-6d53f906-15c6-461f-ae5a-4f9194717ff9.png)
+![image](https://user-images.githubusercontent.com/17751686/128507001-2b65a1b0-0787-40b2-b566-8d052f61fbde.png)
 - `Pause Videos Command` : Command string to pause videos. This command will only respond to the channel owner. 
 - `Resume Videos Command` : Command string to resume videos. This command will only respond to the channel owner. 
 - `Global Video Delay` : Minimum delay between two videos in seconds. If any video has a longer duration than this delay, its duration will be used instead of this value. 
@@ -35,7 +35,7 @@ Required only for `Bot Commands` to work.
   -  `Volume` : Volume of the video, value between 0 and 1. ( decimals with a `.` )
 
 #### Sound Parameters
-![image](https://user-images.githubusercontent.com/17751686/128336399-e77b5d6d-79ba-4ccd-bd5f-5910a1410c3b.png)
+![image](https://user-images.githubusercontent.com/17751686/128507139-9eeba2ac-848b-4914-a91c-d1a64f1ac825.png)
 - `Pause Sounds Command` : Command string to pause sounds. This command will only respond to the channel owner. 
 - `Resume Sounds Command` : Command string to resume sounds. This command will only respond to the channel owner. 
 - `Global Sound Delay` : Minimum delay between two sounds in seconds. If any video has a longer duration than this delay, its duration will be used instead of this value. 
@@ -47,7 +47,7 @@ Required only for `Bot Commands` to work.
 
 
 #### Bot Commands
-![image](https://user-images.githubusercontent.com/17751686/128336451-b39d61c8-8271-49f7-97ff-da6ecd60abfd.png)
+![image](https://user-images.githubusercontent.com/17751686/128507207-edceb6e4-385b-4d35-993d-29a0cff6ae87.png)
 - Bot Commands
   -  `Command` : Command that triggers the bot message.
   -  `Ouput` : Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command.
