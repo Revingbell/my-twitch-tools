@@ -12,6 +12,7 @@ Vous pouvez maintenant commencer à utiliser la v1.2.0.
 
 ### Ajouter des fichiers vidéo et audio
 Mettez tous vos fichiers vidéo dans le dossier `videos`, et tous les fichiers audio dans le dossier `sounds`.
+> :warning: **Les fichiers vidéo avec une extension en `.mov` ne fonctionnent pas**
 
 ### Paramétrer le programme
 Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (Testé sur Chrome et Firefox).  
