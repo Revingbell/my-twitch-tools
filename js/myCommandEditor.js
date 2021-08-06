@@ -122,16 +122,16 @@ function addVideo() {
     $('#videos').append(`
         <div class="text-center form-group row align-items-center video">
             <div class="col-4">
-                <input class="form-control video-command" type="text"value=""/>
+                <input class="form-control video-command" type="text"value="" placeholder="Command read after a !"/>
             </div>
             <div class="col-5">
-                <input class="form-control video-file-name" type="text" value=""/>
+                <input class="form-control video-file-name" type="text" value="" placeholder="File name of the Video"/>
             </div>
             <div class="col-1">
-                <input class="form-control video-delay" type="text" value=""/>
+                <input class="form-control video-delay" type="text" value="" placeholder="Delay Between two uses"/>
             </div>
             <div class="col-1">
-                <input class="form-control video-volume" type="text" value=""/>
+                <input class="form-control video-volume" type="text" value="" placeholder="Volume value between 0 & 1"/>
             </div>
             <div class="col-1">
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
@@ -143,16 +143,16 @@ function addSound() {
     $('#sounds').append(`
         <div class="text-center form-group row align-items-center sound">
             <div class="col-4">
-                <input class="form-control sound-command" type="text" value="" />
+                <input class="form-control sound-command" type="text" value="" placeholder="Command read after a !"/>
             </div>
             <div class="col-5">
-                <input class="form-control sound-file-name" type="text" value="" />
+                <input class="form-control sound-file-name" type="text" value="" placeholder="File name of the Sound"/>
             </div>
             <div class="col-1">
-                <input class="form-control sound-delay" type="text" value="" />
+                <input class="form-control sound-delay" type="text" value="" placeholder="Delay Between two uses"/>
             </div>
             <div class="col-1">
-                <input class="form-control sound-volume" type="text" value="" />
+                <input class="form-control sound-volume" type="text" value="" placeholder="Volume value between 0 & 1"/>
             </div>
             <div class="col-1">
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
@@ -164,11 +164,11 @@ function addBotCommand() {
     $('#bot-commands').append(`
         <div class="text-center form-group row align-items-center bot-command">
             <div class="col-4">
-                <input class="form-control bot-command-string" type="text" value="" />
+                <input class="form-control bot-command-string" type="text" value="" placeholder="Command read after a !"/>
             </div>
             <div class="col-7">
-                <textarea class="form-control bot-command-output" value="">
-                </textarea>
+                <textarea class="form-control bot-command-output" value="" placeholder="Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command">`
+                +`</textarea>
             </div>
             <div class="col-1">
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>

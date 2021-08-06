@@ -50,3 +50,7 @@ body {
 .content-part {
 	margin: 20px;
 }
+
+b {
+	color: red;
+}

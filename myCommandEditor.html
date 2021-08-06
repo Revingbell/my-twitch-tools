@@ -4,9 +4,9 @@
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>
-		<script type="text/javascript" src="js/myTwitchVideoAndSoundEditor.js"></script>
+		<script type="text/javascript" src="js/myCommandEditor.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></link>
-		<link rel="stylesheet" type="text/css" href="css/myTwitchVideoAndSoundEditor.css"></link>
+		<link rel="stylesheet" type="text/css" href="css/myCommandEditor.css"></link>
 	</head>
 	<body>
 		<div class="nav-bar">
@@ -22,38 +22,63 @@
 			</h4>
 			<hr>
 			<div class="row form-group align-items-center">
-				<div class="col-4">
+				<div class="col-2">
+					<label class="important">
+						Twitch Channel
+					</label>
+				</div>
+				<div class="col-2">
+					<input type="text" class="form-control" id="twitch-channel"/>
+				</div>
+				<div class="col-8">
+					<small>
+						Name of the channel. The program will look for commands starting with a ! in this channel's chat.
+						<br>
+						<b>Mandatory for this program to work.</b>
+					</small>
+				</div>
+			</div>
+			<hr>
+			<div class="row form-group align-items-center">
+				<div class="col-2">
 					<label class="important">
 						Chat User
 					</label>
 				</div>
-				<div class="col-4">
+				<div class="col-2">
 					<input type="text" class="form-control" id="twitch-user"/>
+				</div>
+				<div class="col-8">
+					<small>
+						Name of the user (you or a bot account created specifically) that will write in chat.
+						<br>
+						<b>Required only for Bot Commands to work.</b>
+					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
-				<div class="col-4">
+				<div class="col-2">
 					<label class="important">
-						Chat User Oauth Password String
+						Oauth Password String
 					</label>
 				</div>
 				<div class="col-4">
 					<input type="text" class="form-control" id="twitch-pwd"/>
 				</div>
-				<div class="col-4">
-					<a href="https://twitchapps.com/tmi/" target="_blank">
-						Get your oauth password key
-					</a>
-				</div>
-			</div>
-			<div class="row form-group align-items-center">
-				<div class="col-4">
-					<label class="important">
-						Twitch Channel
-					</label>
-				</div>
-				<div class="col-4">
-					<input type="text" class="form-control" id="twitch-channel"/>
+				<div class="col-6">
+					<small>
+						Connect to this link:
+						<a href="https://twitchapps.com/tmi/" target="_blank">
+							[Get your oauth password key]
+						</a>
+						with the account specified as 'Chat User' to get the authentication key.
+						<br>
+						<b>Never provide this key to anyone.</b>
+						<br>
+						In case of doubt, go back to the link to generate a new one.
+						<br>
+						<b>Required only for Bot Commands to work.</b>
+					</small>
 				</div>
 			</div>
 		</div>
@@ -64,8 +89,13 @@
 						Pause Videos Command
 					</label>
 				</div>
-				<div class="col-4">
+				<div class="col-2">
 					<input type="text" class="form-control" id="pause-videos"/>
+				</div>
+				<div class="col-6">
+					<small>
+						This command will only respond to the channel owner.
+					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
@@ -74,8 +104,13 @@
 						Resume Videos Command
 					</label>
 				</div>
-				<div class="col-4">
+				<div class="col-2">
 					<input type="text" class="form-control" id="resume-videos"/>
+				</div>
+				<div class="col-6">
+					<small>
+						This command will only respond to the channel owner.
+					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
@@ -84,8 +119,13 @@
 						Global Video Delay
 					</label>
 				</div>
-				<div class="col-4">
-					<input type="text" class="form-control" id="global-video-delay"/>
+				<div class="col-2">
+					<input type="text" class="form-control" id="global-video-delay" placeholder="Delay in seconds"/>
+				</div>
+				<div class="col-6">
+					<small>
+						Minimum delay between two videos. If any video has a longer duration than this delay, its duration will be used instead of this value.
+					</small>
 				</div>
 			</div>
 			<h4>
@@ -127,8 +167,13 @@
 						Pause Sounds Command
 					</label>
 				</div>
-				<div class="col-4">
+				<div class="col-2">
 					<input type="text" class="form-control" id="pause-sounds"/>
+				</div>
+				<div class="col-6">
+					<small>
+						This command will only respond to the channel owner.
+					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
@@ -137,18 +182,28 @@
 						Resume Sounds Command
 					</label>
 				</div>
-				<div class="col-4">
+				<div class="col-2">
 					<input type="text" class="form-control" id="resume-sounds"/>
+				</div>
+				<div class="col-6">
+					<small>
+						This command will only respond to the channel owner.
+					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-4">
 					<label class="important">
-						Global Sounds Delay
+						Global Sound Delay
 					</label>
 				</div>
-				<div class="col-4">
-					<input type="text" class="form-control" id="global-sound-delay"/>
+				<div class="col-2">
+					<input type="text" class="form-control" id="global-sound-delay" placeholder="Delay in seconds"/>
+				</div>
+				<div class="col-6">
+					<small>
+						Minimum delay between two sounds. If any sound has a longer duration than this delay, its duration will be used instead of this value.
+					</small>
 				</div>
 			</div>
 			<h4>

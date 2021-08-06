@@ -53,7 +53,7 @@ var botCommandsJson = JSON.parse(`
 [
     {
         "commandString" : "test",
-        "commandOutput" : "This is a test, very funny LUL"
+        "commandOutput" : "This is a test, very funny @{username} LUL"
     }
 ]
 `);

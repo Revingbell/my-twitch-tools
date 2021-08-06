@@ -51,7 +51,7 @@ $(function(){
 
 		for ( var i = 0; i < botCommandsJson.length; i++ ) {
 			if ( botCommandsJson[i].commandString == commandString ) {
-				client.say(channel, botCommandsJson[i].commandOutput);
+				client.say(channel, botCommandsJson[i].commandOutput.replace(/\{username\}/g,tags.username));
 			}
 		}
 	}
