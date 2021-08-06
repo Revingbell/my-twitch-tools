@@ -11,6 +11,7 @@ You will be prompted to download the updated version of the file, save it inside
 
 ### Add video and sound files
 Put all video files in the `videos` folder, and all sounds in the `sounds` folder.
+> :warning: **Video files with `.mov` extension do not work**
 
 ### Parametrize the program
 Open the file `myCommandEditor.html` with your preferred web browser (Tested on Firefox).  
