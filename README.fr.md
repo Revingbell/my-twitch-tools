@@ -17,15 +17,13 @@ Mettez tous vos fichiers vidéo dans le dossier `videos`, et tous les fichiers a
 Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (Testé sur Chrome et Firefox).  
 
 #### Global Parameters (Paramètres globaux)
-![image](https://user-images.githubusercontent.com/17751686/128336117-d0a7a07d-1f85-469d-af53-374cd0847b49.png)
+![image](https://user-images.githubusercontent.com/17751686/128506855-18990827-33b2-4125-b309-81b9c533c354.png)
 - `Twitch Channel` : Nom de la chaîne. Ce programme ecoutera le chat de cette chaîne pour y repérer les commandes commençant par un `!`. Obligatoire pour le fonctionnement de ce programme.
 - `Chat User` : Nom de l'utilisateur (peut être votre nom de compte, ou le nom d'un compte de bot créé spécifiquement à cet effet) qui écrira dans le chat. Ce paramètre n'est requis que pour l'utlisation des `Bot Commands`.
 - `Oauth Password String` : Connectez vous au lien: [Obtenir votre clé d'authentification](https://twitchapps.com/tmi/) avec le compte spécifié comme `Chat User` pour récupérer sa clé d'authentification. Ne fournissez jamais cette clé à personne d'autre. En cas de doute, retourner sur le lien pour générer une nouvelle clé et invalider l'ancienne. Ce paramètre n'est requis que pour l'utlisation des `Bot Commands`.
 
-
-
 #### Video Parameters (Paramètres Vidéo)
-![image](https://user-images.githubusercontent.com/17751686/128336328-6d53f906-15c6-461f-ae5a-4f9194717ff9.png)
+![image](https://user-images.githubusercontent.com/17751686/128507019-b0af7871-7d57-4e38-8648-6fd0b10119eb.png)
 - `Pause Videos Command` : Chaîne de caractères de la commande pour mettre les vidéos en pause. Cette commande ne répondra qu'au propriétaire de la chaîne.
 - `Resume Videos Command` : Chaîne de caractères de la commande pour redémarrer les vidéos. Cette commande ne répondra qu'au propriétaire de la chaîne.
 - `Global Video Delay` : Délai minimum entre deux vidéos en secondes. Si une vidéo est d'une durée plus longue que ce délai, sa durée sera utilisée à la place de cette valeur.
@@ -35,9 +33,8 @@ Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (
   -  `Delay` : Délai minimum entre deux utilisation de cette commande, en secondes.
   -  `Volume` : Volume de la vidéo, valeur comprise entre 0 et 1. ( utilisez le `.` pour délimiter les décimales )
 
-
 #### Sound Parameters (Paramètres Audio)
-![image](https://user-images.githubusercontent.com/17751686/128336399-e77b5d6d-79ba-4ccd-bd5f-5910a1410c3b.png)
+![image](https://user-images.githubusercontent.com/17751686/128507126-82b62ca4-201f-497b-a998-def265c19a38.png)
 - `Pause Sounds Command` : Chaîne de caractères de la commande pour mettre les sons en pause. Cette commande ne répondra qu'au propriétaire de la chaîne.
 - `Resume Sounds Command` : Chaîne de caractères de la commande pour redémarrer les sons. Cette commande ne répondra qu'au propriétaire de la chaîne.
 - `Global Sound Delay` : Délai minimum entre deux sons en secondes. Si un son est d'une durée plus longue que ce délai, sa durée sera utilisée à la place de cette valeur.
@@ -47,9 +44,8 @@ Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (
   -  `Delay` : Délai minimum entre deux utilisation de cette commande, en secondes.
   -  `Volume` : Volume du son, valeur comprise entre 0 et 1. ( utilisez le `.` pour délimiter les décimales )
 
-
 #### Bot Commands (Commandes du bot)
-![image](https://user-images.githubusercontent.com/17751686/128336451-b39d61c8-8271-49f7-97ff-da6ecd60abfd.png)
+![image](https://user-images.githubusercontent.com/17751686/128507225-81f71500-2bd9-45a2-9354-13fde863f8f0.png)
 - Bot Commands
   -  `Command` : Chaîne de caractères de la commande pour déclencher la réponse du bot.
   -  `Ouput` : Réponse du bot à cette commande dans le chat. L'utilisation de '{username}' comme variable à laquelle sera substitué le nom de l'utilisateur ayant lancé la commande est possible.
