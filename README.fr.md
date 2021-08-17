@@ -46,7 +46,8 @@ Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (
   -  `Volume` : Volume du son, valeur comprise entre 0 et 1. ( utilisez le `.` pour délimiter les décimales )
 
 #### Bot Commands (Commandes du bot)
-![image](https://user-images.githubusercontent.com/17751686/128507225-81f71500-2bd9-45a2-9354-13fde863f8f0.png)
+![image](https://user-images.githubusercontent.com/17751686/129709198-fb9930ac-82a4-47c8-9a4b-987176a7cc0f.png)
+- `Display All Commands` : Cette commande dira au bot d'écrire la liste des commandes disponibles dans le chat en 3 messages distincts ( videos / sons / commandes du bot).
 - Bot Commands
   -  `Command` : Chaîne de caractères de la commande pour déclencher la réponse du bot.
   -  `Ouput` : Réponse du bot à cette commande dans le chat. L'utilisation de '{username}' comme variable à laquelle sera substitué le nom de l'utilisateur ayant lancé la commande est possible.
