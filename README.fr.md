@@ -56,6 +56,14 @@ Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (
 Appuyez sur ce bouton une fois toutes vos modifications réalisées pour télécharger la nouvelle version de votre fichier `config.js`, et remplacez le dans le dossier`js`.
 
 ## Add to OBS (Ajouter à OBS)
-Dernière étape, ajoutez le fichier `myCommandTool.html` comme source web dans OBS:
+Dernière étape, ajouter une source web dans OBS:
 
-![image](https://user-images.githubusercontent.com/17751686/127782022-b564ccdc-45b1-4810-9643-6fcc72134265.png)
+![image](https://user-images.githubusercontent.com/17751686/129710382-8d28db74-6533-483c-9a7f-4137b4b3692e.png)
+
+Cochez la case `Fichier local`, puis cliquez sur Parcourir et rendez vous là où vous avez dézippé l'application et choisissez le fichier `myCommandTool.html` comme source.
+
+![image](https://user-images.githubusercontent.com/17751686/129711175-ba27df2a-8463-4950-9f2c-0e532b062b95.png)
+
+N'oubliez pas de cocher la case `Désactiver la source quand elle n'est pas visible` ou l'application continuera de tourner quand vous changez de scène ce qui pourrait causer des déclenchements simultanés de plusieurs instances des commandes (sons / videos / commandes du bot).
+
+![image](https://user-images.githubusercontent.com/17751686/129713447-1808933f-a8fa-4579-b7dc-da84cd497e3f.png)
