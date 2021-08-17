@@ -27,6 +27,8 @@ var pauseSounds = "` + $('#pause-sounds').val() + `";
 var resumeSounds = "` + $('#resume-sounds').val() + `";
 var globalSoundDelay = "` + $('#global-sound-delay').val() + `";
 
+var displayAll = "` + $('#display-all').val() + `";
+
 var videosJson = JSON.parse(\`
 [`;
 
@@ -122,16 +124,16 @@ function addVideo() {
     $('#videos').append(`
         <div class="text-center form-group row align-items-center video">
             <div class="col-4">
-                <input class="form-control video-command" type="text"value="" placeholder="Command read after a !"/>
+                <input class="form-control video-command" type="text"value="" />
             </div>
             <div class="col-5">
-                <input class="form-control video-file-name" type="text" value="" placeholder="File name of the Video"/>
+                <input class="form-control video-file-name" type="text" value="" />
             </div>
             <div class="col-1">
-                <input class="form-control video-delay" type="text" value="" placeholder="Delay Between two uses"/>
+                <input class="form-control video-delay" type="text" value="" />
             </div>
             <div class="col-1">
-                <input class="form-control video-volume" type="text" value="" placeholder="Volume value between 0 & 1"/>
+                <input class="form-control video-volume" type="text" value="" />
             </div>
             <div class="col-1">
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
@@ -143,16 +145,16 @@ function addSound() {
     $('#sounds').append(`
         <div class="text-center form-group row align-items-center sound">
             <div class="col-4">
-                <input class="form-control sound-command" type="text" value="" placeholder="Command read after a !"/>
+                <input class="form-control sound-command" type="text" value="" />
             </div>
             <div class="col-5">
-                <input class="form-control sound-file-name" type="text" value="" placeholder="File name of the Sound"/>
+                <input class="form-control sound-file-name" type="text" value="" />
             </div>
             <div class="col-1">
-                <input class="form-control sound-delay" type="text" value="" placeholder="Delay Between two uses"/>
+                <input class="form-control sound-delay" type="text" value="" />
             </div>
             <div class="col-1">
-                <input class="form-control sound-volume" type="text" value="" placeholder="Volume value between 0 & 1"/>
+                <input class="form-control sound-volume" type="text" value="" />
             </div>
             <div class="col-1">
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
@@ -164,10 +166,10 @@ function addBotCommand() {
     $('#bot-commands').append(`
         <div class="text-center form-group row align-items-center bot-command">
             <div class="col-4">
-                <input class="form-control bot-command-string" type="text" value="" placeholder="Command read after a !"/>
+                <input class="form-control bot-command-string" type="text" value="" />
             </div>
             <div class="col-7">
-                <textarea class="form-control bot-command-output" value="" placeholder="Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command">`
+                <textarea class="form-control bot-command-output" value="" >`
                 +`</textarea>
             </div>
             <div class="col-1">
@@ -211,16 +213,16 @@ $(function(){
         $('#videos').append(`
             <div class="text-center form-group row align-items-center video">
                 <div class="col-4">
-                    <input class="form-control video-command" type="text"value="` + videosJson[i].command + `"/>
+                    <input class="form-control video-command" type="text" value="` + videosJson[i].command + `" />
                 </div>
                 <div class="col-5">
-                    <input class="form-control video-file-name" type="text" value="` + videosJson[i].file + `"/>
+                    <input class="form-control video-file-name" type="text" value="` + videosJson[i].file + `" />
                 </div>
                 <div class="col-1">
-                    <input class="form-control video-delay" type="text" value="` + videosJson[i].delay + `"/>
+                    <input class="form-control video-delay" type="text" value="` + videosJson[i].delay + `" />
                 </div>
                 <div class="col-1">
-                    <input class="form-control video-volume" type="text" value="` + videosJson[i].volume + `"/>
+                    <input class="form-control video-volume" type="text" value="` + videosJson[i].volume + `" />
                 </div>
                 <div class="col-1">
                     <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
@@ -259,6 +261,8 @@ $(function(){
     /*
         Bot Commands
     */
+    $('#display-all').val(displayAll);
+
     for ( let i = 0; i < botCommandsJson.length; i++ ) {
         $('#bot-commands').append(`
             <div class="text-center form-group row align-items-center bot-command">
@@ -266,7 +270,7 @@ $(function(){
                     <input class="form-control bot-command-string" type="text" value="` + botCommandsJson[i].commandString + `" />
                 </div>
                 <div class="col-7">
-                    <textarea class="form-control bot-command-output">`
+                    <textarea class="form-control bot-command-output" >`
                          + botCommandsJson[i].commandOutput
                     +`</textarea>
                 </div>

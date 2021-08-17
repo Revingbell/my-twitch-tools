@@ -17,9 +17,9 @@
 		  <a id="export" onclick="exportFile()">Export</a>
 		</div>
 		<div id="global-menu" class="content-part">
-			<h4>
+			<h2>
 				Global Parameters
-			</h4>
+			</h2>
 			<hr>
 			<div class="row form-group align-items-center">
 				<div class="col-2">
@@ -128,9 +128,9 @@
 					</small>
 				</div>
 			</div>
-			<h4>
+			<h2>
 				Videos
-			</h4>
+			</h2>
 			<hr>
 			<div id="videos">
 				<div class="text-center row header">
@@ -156,6 +156,60 @@
 					</div>
 					<div class="col-1">
 						<button class="btn btn-outline-primary" type="button" onclick="addVideo()">Add</button>
+					</div>
+				</div>
+			</div>
+			<br>
+			<h4>
+				<i>Legend</i>
+			</h4>
+			<div class="legend">
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							Command
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							 Command read after a ! that triggers the video.
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							File Name
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							Name of the video file you've put in the videos folder.
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							Delay
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							Minimum delay between two uses of this particular command, in seconds.
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							Volume
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							Volume of the video, value between 0 and 1. ( decimals with a "." )
+						</small>
 					</div>
 				</div>
 			</div>
@@ -206,9 +260,9 @@
 					</small>
 				</div>
 			</div>
-			<h4>
+			<h2>
 				Sounds
-			</h4>
+			</h2>
 			<hr>
 			<div id="sounds">
 				<div class="text-center row header">
@@ -237,11 +291,80 @@
 					</div>
 				</div>
 			</div>
+			<br>
+			<h4>
+				<i>Legend</i>
+			</h4>
+			<div class="legend">
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							Command
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							 Command read after a ! that triggers the sound.
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							File Name
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							Name of the sound file you've put in the sounds folder.
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							Delay
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							Minimum delay between two uses of this particular command, in seconds.
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							Volume
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							Volume of the sound, value between 0 and 1. ( decimals with a "." )
+						</small>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div id="bot-commands-menu" class="content-part d-none">
-			<h4>
+			<div class="row form-group align-items-center">
+				<div class="col-4">
+					<label class="important">
+						Display All Commands
+					</label>
+				</div>
+				<div class="col-3">
+					<input type="text" class="form-control" id="display-all" />
+				</div>
+				<div class="col-5">
+					<small>
+						This command will display all video/sound/bot commands in the chat in 3 distinct messages.
+					</small>
+				</div>
+			</div>
+			<h2>
 				Bot Commands
-			</h4>
+			</h2>
 			<hr>
 			<div id="bot-commands">
 				<div class="text-center row header">
@@ -257,6 +380,36 @@
 					</div>
 					<div class="col-1">
 						<button class="btn btn-outline-primary" type="button" onclick="addBotCommand()">Add</button>
+					</div>
+				</div>
+			</div>
+			<br>
+			<h4>
+				<i>Legend</i>
+			</h4>
+			<div class="legend">
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							Command
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							Command read after a ! that triggers the bot message.
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label class="important">
+							Output
+						</label>
+					</div>
+					<div class="col-10">
+						<small>
+							Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command
+						</small>
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 var videoQ = new videoQueue(globalVideoDelay);
 var soundQ = new soundQueue(globalSoundDelay);
+var noBot = false;
 
 function videoQueueRunner() {
 	videoQ.resolve();
@@ -49,23 +50,52 @@ $(function(){
 			}
 		}
 
-		for ( var i = 0; i < botCommandsJson.length; i++ ) {
-			if ( botCommandsJson[i].commandString == commandString ) {
-				client.say(channel, botCommandsJson[i].commandOutput.replace(/\{username\}/g,tags.username));
+		if ( noBot === false ) {
+
+			if ( commandString === displayAll ){
+				let output = "";
+
+				// Video Message
+				output += "Videos: ";
+
+				for ( var i = 0; i < videosJson.length; i++ ) {
+					output += videosJson[i].command + " | ";
+				}
+
+				output = output.slice(0,-3);
+
+				client.say(channel,output);
+
+				// Sound Message
+				output = "Sounds: ";
+
+				for ( var i = 0; i < soundsJson.length; i++ ) {
+					output += soundsJson[i].command + " | ";
+				}
+
+				output = output.slice(0,-3);
+
+				client.say(channel,output);
+
+				// Bot Commands Message
+				output = "Bot Commands: " + displayAll + " | ";
+
+				for ( var i = 0; i < botCommandsJson.length; i++ ) {
+					output += botCommandsJson[i].commandString + " | ";
+				}
+
+				output = output.slice(0,-3);
+
+				client.say(channel,output);
+
+			}
+
+			for ( var i = 0; i < botCommandsJson.length; i++ ) {
+				if ( botCommandsJson[i].commandString == commandString ) {
+					client.say(channel, botCommandsJson[i].commandOutput.replace(/\{username\}/g,tags.username));
+				}
 			}
 		}
-	}
-
-	/*
-		Remove Sound Element after delay to enable another use
-	*/
-	function removeSound(sound) {
-		setTimeout(function(){
-			let soundDuration = ($('#' + sound.command)[0].duration*1000) - 500;
-			setTimeout(function(){
-				$('#' + sound.command)[0].remove();
-			}, sound.delay * 1000 - soundDuration );
-		},500);
 	}
 
 	/*
@@ -80,6 +110,8 @@ $(function(){
 			},
 			channels: [ channelName ]
 		};
+
+		noBot = true;
 	} else {
 		clientOptions = {
 			connection: {

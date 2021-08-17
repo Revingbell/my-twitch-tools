@@ -10,6 +10,8 @@ var pauseSounds = "psnd";
 var resumeSounds = "rsnd";
 var globalSoundDelay = "5";
 
+var displayAll = "commands";
+
 var videosJson = JSON.parse(`
 [
     {
@@ -29,6 +31,18 @@ var videosJson = JSON.parse(`
         "file" : "fin_du_monde.mp4",
         "delay" : "10",
         "volume" : "0.2"
+    },
+    {
+        "command" : "eleo",
+        "file" : "eleonore.mp4",
+        "delay" : "10",
+        "volume" : "0.5"
+    },
+    {
+        "command" : "triste",
+        "file" : "tuestriste.mp4",
+        "delay" : "10",
+        "volume" : "0.5"
     }
 ]`);
 

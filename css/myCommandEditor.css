@@ -54,3 +54,8 @@ body {
 b {
 	color: red;
 }
+
+.legend {
+	font-style: italic;
+	font-size: 14px ;
+}
