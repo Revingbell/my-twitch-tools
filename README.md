@@ -48,7 +48,8 @@ Required only for `Bot Commands` to work.
 
 
 #### Bot Commands
-![image](https://user-images.githubusercontent.com/17751686/128507207-edceb6e4-385b-4d35-993d-29a0cff6ae87.png)
+![image](https://user-images.githubusercontent.com/17751686/129709198-fb9930ac-82a4-47c8-9a4b-987176a7cc0f.png)
+- `Display All Commands` : This command will display all video/sound/bot commands in the chat in 3 distinct messages.
 - Bot Commands
   -  `Command` : Command that triggers the bot message.
   -  `Ouput` : Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command.
