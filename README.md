@@ -68,6 +68,5 @@ Check the "Local File" box, then go to where you've unzipped the app and choose 
 ![image](https://user-images.githubusercontent.com/17751686/129711175-ba27df2a-8463-4950-9f2c-0e532b062b95.png)
 
 Don't forget to check the `Shutdown source when not visible` box or the app will still function when you change scenes and you'll get duplicate sounds/videos/bot commands.
-Also remember to check the `Refresh browser when scene becomes active` so that when you change scene the app is refreshed.
 
-![image](https://user-images.githubusercontent.com/17751686/129711699-ded66314-b7a0-4492-881e-144f02b9f2ba.png)
+![image](https://user-images.githubusercontent.com/17751686/129713475-62ec41e0-3e83-4bdd-bdce-08a2bbb6bb93.png)
