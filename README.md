@@ -59,6 +59,15 @@ Hit this button to download the new version of your `config.js` file, replace it
 
 ## Add to OBS
 
-Then as a last step, add the `myCommandTool.html` as an internet source in OBS:
+Then as a last step, add a Browser source in OBS:
 
-![image](https://user-images.githubusercontent.com/17751686/127782022-b564ccdc-45b1-4810-9643-6fcc72134265.png)
+![image](https://user-images.githubusercontent.com/17751686/129710382-8d28db74-6533-483c-9a7f-4137b4b3692e.png)
+
+Check the "Local File" box, then go to where you've unzipped the app and choose the `myCommandTool.html` file as a source.
+
+![image](https://user-images.githubusercontent.com/17751686/129711175-ba27df2a-8463-4950-9f2c-0e532b062b95.png)
+
+Don't forget to check the `Shutdown source when not visible` box or the app will still function when you change scenes and you'll get duplicate sounds/videos/bot commands.
+Also remember to check the `Refresh browser when scene becomes active` so that when you change scene the app is refreshed.
+
+![image](https://user-images.githubusercontent.com/17751686/129711699-ded66314-b7a0-4492-881e-144f02b9f2ba.png)
