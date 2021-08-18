@@ -59,6 +59,11 @@ $(function(){
 				output += "Videos: ";
 
 				for ( var i = 0; i < videosJson.length; i++ ) {
+					if ( ( output.length +videosJson[i].command.length + " | ".length ) >= 500 ) {
+						output = output.slice(0,-3);
+						client.say(channel,output);
+						output = "Videos: ";
+					}
 					output += videosJson[i].command + " | ";
 				}
 
@@ -70,6 +75,11 @@ $(function(){
 				output = "Sounds: ";
 
 				for ( var i = 0; i < soundsJson.length; i++ ) {
+					if ( ( output.length + soundsJson[i].command.length + " | ".length ) >= 500 ) {
+						output = output.slice(0,-3);
+						client.say(channel,output);
+						output = "Sounds: ";
+					}
 					output += soundsJson[i].command + " | ";
 				}
 
@@ -81,6 +91,11 @@ $(function(){
 				output = "Bot Commands: " + displayAll + " | ";
 
 				for ( var i = 0; i < botCommandsJson.length; i++ ) {
+					if ( ( output.length +videosJson[i].command.length + " | ".length ) >= 500 ) {
+						output = output.slice(0,-3);
+						client.say(channel,output);
+						output = "Bot Commands: ";
+					}
 					output += botCommandsJson[i].commandString + " | ";
 				}
 
