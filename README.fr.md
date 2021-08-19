@@ -46,11 +46,11 @@ Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (
   -  `Volume` : Volume du son, valeur comprise entre 0 et 1. ( utilisez le `.` pour délimiter les décimales )
 
 #### Bot Commands (Commandes du bot)
-![image](https://user-images.githubusercontent.com/17751686/129709198-fb9930ac-82a4-47c8-9a4b-987176a7cc0f.png)
+![image](https://user-images.githubusercontent.com/17751686/130066746-bbd26c2b-763a-4a72-877c-5b2e060fc6e1.png)
 - `Display All Commands` : Cette commande dira au bot d'écrire la liste des commandes disponibles dans le chat en 3 messages distincts ( videos / sons / commandes du bot).
 - Bot Commands
   -  `Command` : Chaîne de caractères de la commande pour déclencher la réponse du bot.
-  -  `Ouput` : Réponse du bot à cette commande dans le chat. L'utilisation de '{username}' comme variable à laquelle sera substitué le nom de l'utilisateur ayant lancé la commande est possible.
+  -  `Ouput` : Réponse du bot à cette commande dans le chat. L'utilisation de '{username}' comme variable à laquelle sera substitué le nom de l'utilisateur ayant lancé la commande est possible. Si vous souhaitez des commandes multi parties, il vous suffit d'utiliser la même chaîne de caractère remplaçable dans la chaîne de la commande et dans le message du bot. i.e. "$1" ou "{a}" etc... ( voir les exemples pré-remplis )
 
 #### Export (Exporter)
 Appuyez sur ce bouton une fois toutes vos modifications réalisées pour télécharger la nouvelle version de votre fichier `config.js`, et remplacez le dans le dossier`js`.
