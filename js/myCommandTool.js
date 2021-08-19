@@ -59,7 +59,7 @@ $(function(){
 				output += "Videos: ";
 
 				for ( var i = 0; i < videosJson.length; i++ ) {
-					if ( ( output.length +videosJson[i].command.length + " | ".length ) >= 500 ) {
+					if ( ( output.length + videosJson[i].command.length + " | ".length ) >= 500 ) {
 						output = output.slice(0,-3);
 						client.say(channel,output);
 						output = "Videos: ";
@@ -91,7 +91,7 @@ $(function(){
 				output = "Bot Commands: " + displayAll + " | ";
 
 				for ( var i = 0; i < botCommandsJson.length; i++ ) {
-					if ( ( output.length +videosJson[i].command.length + " | ".length ) >= 500 ) {
+					if ( ( output.length + botCommandsJson[i].command.length + " | ".length ) >= 500 ) {
 						output = output.slice(0,-3);
 						client.say(channel,output);
 						output = "Bot Commands: ";

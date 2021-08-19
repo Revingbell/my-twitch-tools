@@ -32,26 +32,40 @@ var displayAll = "` + $('#display-all').val() + `";
 var videosJson = JSON.parse(\`
 [`;
 
+    /*
+        Append Videos
+    */
     let videos = $('.video');
-    videos.each(function(i,e){
-        let command = $(e).find('.video-command').val().trim();
-        let file = $(e).find('.video-file-name').val().trim();
-        let delay = $(e).find('.video-delay').val();
-        let volume = $(e).find('.video-volume').val();
+    let videosArray = [];
 
-        if ( command === "" || file === "" || delay === "" || volume === "" ) {
+    videos.each(function(i,e){
+        let videoObject = {
+            "command"   :   $(e).find('.video-command').val().trim(),
+            "file"      :   $(e).find('.video-file-name').val().trim(),
+            "delay"     :   $(e).find('.video-delay').val(),
+            "volume"    :   $(e).find('.video-volume').val()
+        };
+
+        videosArray.push(videoObject);
+    });
+
+    // Sort videos alphabetically by command then file name
+    videosArray.sort((a,b) => (a.command > b.command) ? 1 : (a.command === b.command) ? ((a.file > b.file) ? 1 : -1) : -1)
+
+    videosArray.forEach(function(e,i){
+        if ( e.command === "" || e.file === "" || e.delay === "" || e.volume === "" ) {
             return true;
         }
 
         text += `
     {
-        "command" : "` + command + `",
-        "file" : "` + file + `",
-        "delay" : "` + delay + `",
-        "volume" : "` + volume + `"
+        "command" : "` + e.command + `",
+        "file" : "` + e.file + `",
+        "delay" : "` + e.delay + `",
+        "volume" : "` + e.volume + `"
     }`;
 
-        if ( i !== videos.length - 1 ) {
+        if ( i !== videosArray.length - 1 ) {
             text += `,`;
         }
     });
@@ -59,29 +73,44 @@ var videosJson = JSON.parse(\`
     text += `
 ]\`);
 
+
 var soundsJson = JSON.parse(\`
 [`;
 
+    /*
+        Append Sounds
+    */
     let sounds = $('.sound');
-    sounds.each(function(i,e){
-        let command = $(e).find('.sound-command').val().trim();
-        let file = $(e).find('.sound-file-name').val().trim();
-        let delay = $(e).find('.sound-delay').val();
-        let volume = $(e).find('.sound-volume').val();
+    let soundsArray = [];
 
-        if ( command === "" || file === "" || delay === "" || volume === "" ) {
+    sounds.each(function(i,e){
+        let soundObject = {
+            "command"   : $(e).find('.sound-command').val().trim(),
+            "file"      : $(e).find('.sound-file-name').val().trim(),
+            "delay"     : $(e).find('.sound-delay').val(),
+            "volume"    : $(e).find('.sound-volume').val()
+        };
+
+        soundsArray.push(soundObject);
+    });
+
+    // Sort sounds alphabetically by command then file name
+    soundsArray.sort((a,b) => (a.command > b.command) ? 1 : (a.command === b.command) ? ((a.file > b.file) ? 1 : -1) : -1)
+
+    soundsArray.forEach(function(e,i){
+        if ( e.command === "" || e.file === "" || e.delay === "" || e.volume === "" ) {
             return true;
         }
 
         text += `
     {
-        "command" : "` + command + `",
-        "file" : "` + file + `",
-        "delay" : "` + delay + `",
-        "volume" : "` + volume + `"
+        "command" : "` + e.command + `",
+        "file" : "` + e.file + `",
+        "delay" : "` + e.delay + `",
+        "volume" : "` + e.volume + `"
     }`;
 
-        if ( i !== sounds.length - 1 ) {
+        if ( i !== soundsArray.length - 1 ) {
             text += `,`;
         }
     });
@@ -94,11 +123,21 @@ var botCommandsJson = JSON.parse(\`
 [`;
 
     let botCommands = $('.bot-command');
-    botCommands.each(function(i,e){
-        let commandString = $(e).find('.bot-command-string').val().trim();
-        let commandOutput = $(e).find('.bot-command-output').val().trim();
+    let botCommandsArray = [];
 
-        if ( commandString === "" || commandOutput === "") {
+    botCommands.each(function(i,e){
+        let botCommandObject = {
+            "commandString" :   $(e).find('.bot-command-string').val().trim(),
+            "commandOutput" :   $(e).find('.bot-command-output').val().trim()
+        }
+
+        botCommandsArray.push(botCommandObject);
+    });
+
+    botCommandsArray.sort((a,b) => (a.commandString > b.commandString) ? 1 : (a.commandString === b.commandString) ? ((a.commandOutput > b.commandOutput) ? 1 : -1) : -1);
+
+    botCommandsArray.forEach(function(e,i){
+        if ( e.commandString === "" || e.commandOutput === "") {
             return true;
         }
 
@@ -108,7 +147,7 @@ var botCommandsJson = JSON.parse(\`
         "commandOutput" : "` + commandOutput + `"
     }`;
 
-        if ( i !== botCommands.length - 1 ) {
+        if ( i !== botCommandsArray.length - 1 ) {
             text += `,`;
         }
     });
