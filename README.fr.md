@@ -1,18 +1,18 @@
 # My Twitch Commands Tool
 [Télécharger la dernière version](https://github.com/Revingbell/my-twitch-video-and-sound-commands/releases) (téléchargez l'archive de votre choix et extrayez la à l'emplacement de votre choix).  
 
-*Lire ceci dans un autre langage : [English](README•md), [Français](README.fr•md).*
+*Lire ceci dans un autre langage : [English](README.md), [Français](README.fr.md).*
 
 ## Utilisation:
 
 ### Mettre à jour votre fichier de config de la v1.1.0
-Mettez votre ancien fichier `config•js` dans le dossier `js`, puis ouvrez le fichier `updateConfigFile.html` avec le navigateur web de votre choix (Testé sur Chrome et Firefox).  
+Mettez votre ancien fichier `config.js` dans le dossier `js`, puis ouvrez le fichier `updateConfigFile.html` avec le navigateur web de votre choix (Testé sur Chrome et Firefox).  
 Une fenêtre de téléchargement vous proposera alors de télécharger la nouvelle version du fichier, enregistrez le en remplaçant l'ancienne version dans le dossier `js`.  
 Vous pouvez maintenant commencer à utiliser la v1.2.0.
 
 ### Ajouter des fichiers vidéo et audio
 Mettez tous vos fichiers vidéo dans le dossier `videos`, et tous les fichiers audio dans le dossier `sounds`.
-> :warning: **Les fichiers vidéo avec une extension en `•mov` ne fonctionnent pas**
+> :warning: **Les fichiers vidéo avec une extension en `.mov` ne fonctionnent pas**
 
 ### Paramétrer le programme
 Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (Testé sur Chrome et Firefox).  
@@ -50,7 +50,7 @@ Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (
 - `Afficher toutes les Commandes` : Cette commande demandera au bot d'écrire la liste des commandes disponibles dans le chat en (au moins) 3 messages distincts ( videos / sons / commandes du bot).
 - Bot Commands
   -  `Commande` : Chaîne de caractères de la commande pour déclencher la réponse du bot.
-  -  `Sortie Chat` : Réponse du bot à cette commande dans le chat. L'utilisation de '{username}' comme variable à laquelle sera substitué le nom de l'utilisateur ayant lancé la commande est possible. Si vous souhaitez des commandes multi parties, il vous suffit d'utiliser la même chaîne de caractère remplaçable dans la chaîne de la commande et dans le message du bot. i•e. "$1" ou "{a}" etc... ( voir les exemples pré-remplis )
+  -  `Sortie Chat` : Réponse du bot à cette commande dans le chat. L'utilisation de '{username}' comme variable à laquelle sera substitué le nom de l'utilisateur ayant lancé la commande est possible. Si vous souhaitez des commandes multi parties, il vous suffit d'utiliser la même chaîne de caractère remplaçable dans la chaîne de la commande et dans le message du bot. i.e. "$1" ou "{a}" etc... ( voir les exemples pré-remplis )
 
 #### Langage
 Choisissez l'un des langages disponibles pour l'interface:
@@ -58,7 +58,7 @@ Choisissez l'un des langages disponibles pour l'interface:
 - Français
 
 #### Exporter
-Appuyez sur ce bouton une fois toutes vos modifications réalisées pour télécharger la nouvelle version de votre fichier `config•js`, et remplacez le dans le dossier`js`.
+Appuyez sur ce bouton une fois toutes vos modifications réalisées pour télécharger la nouvelle version de votre fichier `config.js`, et remplacez le dans le dossier`js`.
 
 ## Ajouter à OBS
 Dernière étape, ajouter une source web dans OBS:
