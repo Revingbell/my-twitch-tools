@@ -219,7 +219,7 @@ function addBotCommand() {
 
 function switchMenu(selectedMenu) {
     let selectedId = selectedMenu.attr('display-target');
-    let menus = $('.nav-bar a').not('#export');
+    let menus = $('nav a').not('#export');
 
     /* Reset Menus */
     menus.removeClass('active');

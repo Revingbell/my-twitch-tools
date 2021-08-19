@@ -5,79 +5,84 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript" src="js/myCommandEditor.js"></script>
+		<script type="text/javascript" src="js/language.js"></script>
+		<script type="text/javascript" src="js/Text-Content/en.js"></script>
+		<script type="text/javascript" src="js/Text-Content/fr.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></link>
 		<link rel="stylesheet" type="text/css" href="css/myCommandEditor.css"></link>
 	</head>
 	<body>
-		<div class="nav-bar">
-		  <a display-target="global-menu" class="active" onclick="switchMenu($(this))">Global Parameters</a>
-		  <a display-target="videos-menu" onclick="switchMenu($(this))">Video Parameters</a>
-		  <a display-target="sounds-menu" onclick="switchMenu($(this))">Sound Parameters</a>
-		  <a display-target="bot-commands-menu" onclick="switchMenu($(this))">Bot Commands</a>
-		  <a id="export" onclick="exportFile()">Export</a>
-		</div>
-		<div id="global-menu" class="content-part">
-			<h2>
-				Global Parameters
+		<nav>
+			<ul>
+				<li>
+					<a lang-target="global-menu" display-target="global-menu" class="active content-text" onclick="switchMenu($(this))"></a>
+				</li>
+				<li>
+					<a lang-target="videos-menu" display-target="videos-menu" class="content-text" onclick="switchMenu($(this))"></a>
+				</li>
+				<li>
+					<a lang-target="sounds-menu" display-target="sounds-menu" class="content-text" onclick="switchMenu($(this))"></a>
+				</li>
+				<li>
+					<a lang-target="bot-commands-menu" display-target="bot-commands-menu" class="content-text" onclick="switchMenu($(this))"></a>
+				</li>
+				<li class="menu-deroulant">
+					<a lang-target="language-menu" class="content-text" href="#"></a>
+			      	<ul class="sous-menu">
+						<li>
+							<a lang-target="english-menu" class="content-text" onclick="setLanguage('en')"></a>
+						</li>
+						<li>
+							<a lang-target="french-menu" class="content-text" onclick="setLanguage('fr')"></a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a lang-target="export-menu" id="export" class="content-text" onclick="exportFile()"></a>
+				</li>
+			</ul>
+		</nav>
+		<div id="global-menu" class="content-part" >
+			<h2 lang-target="global-title" class="content-text">
 			</h2>
-			<hr>
+			<hr class="solid">
 			<div class="row form-group align-items-center">
 				<div class="col-2">
-					<label class="important">
-						Twitch Channel
+					<label lang-target="channel-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="twitch-channel"/>
 				</div>
 				<div class="col-8">
-					<small>
-						Name of the channel. The program will look for commands starting with a ! in this channel's chat.
-						<br>
-						<b>Mandatory for this program to work.</b>
+					<small lang-target="channel-legend" class="content-text">
 					</small>
 				</div>
 			</div>
-			<hr>
+			<hr class="solid">
 			<div class="row form-group align-items-center">
 				<div class="col-2">
-					<label class="important">
-						Chat User
+					<label lang-target="chat-user-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="twitch-user"/>
 				</div>
 				<div class="col-8">
-					<small>
-						Name of the user (you or a bot account created specifically) that will write in chat.
-						<br>
-						<b>Required only for Bot Commands to work.</b>
+					<small lang-target="chat-user-legend" class="content-text">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-2">
-					<label class="important">
-						Oauth Password String
+					<label lang-target="chat-oauth-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-4">
 					<input type="text" class="form-control" id="twitch-pwd"/>
 				</div>
 				<div class="col-6">
-					<small>
-						Connect to this link:
-						<a href="https://twitchapps.com/tmi/" target="_blank">
-							[Get your oauth password key]
-						</a>
-						with the account specified as 'Chat User' to get the authentication key.
-						<br>
-						<b>Never provide this key to anyone.</b>
-						<br>
-						In case of doubt, go back to the link to generate a new one.
-						<br>
-						<b>Required only for Bot Commands to work.</b>
+					<small lang-target="chat-oauth-legend" class="content-text">
 					</small>
 				</div>
 			</div>
@@ -85,130 +90,110 @@
 		<div id="videos-menu" class="content-part d-none">
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label class="important">
-						Pause Videos Command
+					<label lang-target="pause-videos-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="pause-videos"/>
 				</div>
 				<div class="col-6">
-					<small>
-						This command will only respond to the channel owner.
+					<small lang-target="pause-videos-legend" class="content-text">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label class="important">
-						Resume Videos Command
+					<label lang-target="resume-videos-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="resume-videos"/>
 				</div>
 				<div class="col-6">
-					<small>
-						This command will only respond to the channel owner.
+					<small lang-target="resume-videos-legend" class="content-text">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label class="important">
-						Global Video Delay
+					<label lang-target="delay-videos-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="global-video-delay" placeholder="Delay in seconds"/>
 				</div>
 				<div class="col-6">
-					<small>
-						Minimum delay between two videos. If any video has a longer duration than this delay, its duration will be used instead of this value.
+					<small lang-target="delay-videos-legend" class="content-text">
 					</small>
 				</div>
 			</div>
-			<h2>
-				Videos
+			<h2 lang-target="videos-title" class="content-text">
 			</h2>
-			<hr>
+			<hr class="solid">
 			<div id="videos">
 				<div class="text-center row header">
 					<div class="col-4">
-						<label class="important">
-							Command
-						</label>
+						<label lang-target="video-command-title" class="important content-text"></label>
 					</div>
 					<div class="col-5">
-						<label class="important">
-							File Name
+						<label lang-target="video-file-title" class="important content-text">
 						</label>
 					</div>
 					<div class="col-1">
-						<label class="important">
-							Delay
+						<label lang-target="video-delay-title" class="important content-text">
 						</label>
 					</div>
 					<div class="col-1">
-						<label class="important">
-							Volume
+						<label lang-target="video-volume-title" class="important content-text">
 						</label>
 					</div>
 					<div class="col-1">
-						<button class="btn btn-outline-primary" type="button" onclick="addVideo()">Add</button>
+						<button lang-target="add-button" class="btn btn-outline-primary content-text" type="button" onclick="addVideo()"></button>
 					</div>
 				</div>
 			</div>
 			<br>
 			<h4>
-				<i>Legend</i>
+				<i lang-target="legend-title" class="content-text"></i>
 			</h4>
 			<div class="legend">
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							Command
+						<label lang-target="video-command-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							 Command read after a ! that triggers the video.
+						<small lang-target="video-command-legend" class="content-text">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							File Name
+						<label lang-target="video-file-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							Name of the video file you've put in the videos folder.
+						<small lang-target="video-file-legend" class="content-text">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							Delay
+						<label lang-target="video-delay-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							Minimum delay between two uses of this particular command, in seconds.
+						<small lang-target="video-delay-legend" class="content-text">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							Volume
+						<label lang-target="video-volume-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							Volume of the video, value between 0 and 1. ( decimals with a "." )
+						<small lang-target="video-volume-legend" class="content-text">
 						</small>
 					</div>
 				</div>
@@ -217,130 +202,112 @@
 		<div id="sounds-menu" class="content-part d-none">
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label class="important">
-						Pause Sounds Command
+					<label lang-target="pause-sounds-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="pause-sounds"/>
 				</div>
 				<div class="col-6">
-					<small>
-						This command will only respond to the channel owner.
+					<small lang-target="pause-sounds-legend" class="content-text">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label class="important">
-						Resume Sounds Command
+					<label lang-target="resume-sounds-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="resume-sounds"/>
 				</div>
 				<div class="col-6">
-					<small>
-						This command will only respond to the channel owner.
+					<small lang-target="resume-sounds-label" class="content-text">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label class="important">
-						Global Sound Delay
+					<label lang-target="delay-sounds-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="global-sound-delay" placeholder="Delay in seconds"/>
 				</div>
 				<div class="col-6">
-					<small>
-						Minimum delay between two sounds. If any sound has a longer duration than this delay, its duration will be used instead of this value.
+					<small lang-target="delay-sounds-label" class="content-text">
 					</small>
 				</div>
 			</div>
-			<h2>
-				Sounds
+			<h2 lang-target="sounds-title" class='content-text'>
 			</h2>
-			<hr>
+			<hr class="solid">
 			<div id="sounds">
 				<div class="text-center row header">
 					<div class="col-4">
-						<label class="important">
-							Command
+						<label lang-target="sound-command-title" class="important content-text">
 						</label>
 					</div>
 					<div class="col-5">
-						<label class="important">
-							File Name
+						<label lang-target="sound-file-title" class="important content-text">
 						</label>
 					</div>
 					<div class="col-1">
-						<label class="important">
+						<label lang-target="sound-delay-title" class="important content-text">
 							Delay
 						</label>
 					</div>
 					<div class="col-1">
-						<label class="important">
-							Volume
+						<label lang-target="sound-volume-title" class="important content-text">
 						</label>
 					</div>
 					<div class="col-1">
-						<button class="btn btn-outline-primary" type="button" onclick="addSound()">Add</button>
+						<button lang-target="add-button" class="btn btn-outline-primary content-text" type="button" onclick="addSound()"></button>
 					</div>
 				</div>
 			</div>
 			<br>
 			<h4>
-				<i>Legend</i>
+				<i lang-target="legend-title" class="content-text"></i>
 			</h4>
 			<div class="legend">
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							Command
+						<label lang-target="sound-command-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							 Command read after a ! that triggers the sound.
+						<small lang-target="sound-command-legend" class="content-text">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							File Name
+						<label lang-target="sound-file-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							Name of the sound file you've put in the sounds folder.
+						<small lang-target="sound-file-legend" class="content-text">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							Delay
+						<label lang-target="sound-delay-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							Minimum delay between two uses of this particular command, in seconds.
+						<small lang-target="sound-delay-legend" class="content-text">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							Volume
+						<label lang-target="sound-volume-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							Volume of the sound, value between 0 and 1. ( decimals with a "." )
+						<small lang-target="sound-volume-legend" class="content-text">
 						</small>
 					</div>
 				</div>
@@ -349,68 +316,57 @@
 		<div id="bot-commands-menu" class="content-part d-none">
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label class="important">
-						Display All Commands
+					<label lang-target="display-all-command-label" class="important content-text">
 					</label>
 				</div>
 				<div class="col-3">
 					<input type="text" class="form-control" id="display-all" />
 				</div>
 				<div class="col-5">
-					<small>
-						This command will display all video/sound/bot commands in the chat in 3 distinct messages.
+					<small lang-target="display-all-command-legend" class="content-text">
 					</small>
 				</div>
 			</div>
-			<h2>
-				Bot Commands
+			<h2 lang-target="bot-commands-title" class="content-text">
 			</h2>
-			<hr>
+			<hr class="solid">
 			<div id="bot-commands">
 				<div class="text-center row header">
 					<div class="col-4">
-						<label class="important">
-							Command
+						<label lang-target="bot-command-string-title" class="important content-text">
 						</label>
 					</div>
 					<div class="col-7">
-						<label class="important">
-							Output
+						<label lang-target="bot-command-output-title" class="important content-text">
 						</label>
 					</div>
 					<div class="col-1">
-						<button class="btn btn-outline-primary" type="button" onclick="addBotCommand()">Add</button>
+						<button lang-target="add-button" class="btn btn-outline-primary content-text" type="button" onclick="addBotCommand()"></button>
 					</div>
 				</div>
 			</div>
 			<br>
 			<h4>
-				<i>Legend</i>
+				<i lang-target="legend-title" class="content-text"></i>
 			</h4>
 			<div class="legend">
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							Command
+						<label lang-target="bot-command-string-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							Command read after a ! that triggers the bot message.
+						<small lang-target="bot-command-string-legend" class="content-text">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label class="important">
-							Output
+						<label lang-target="bot-command-output-label" class="important content-text">
 						</label>
 					</div>
 					<div class="col-10">
-						<small>
-							Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command
-							<br>
-							If you want to make multipart commands, just use the same replaceable string inside the Command String and the Command Output. i.e. "$1" or "{a}" etc... ( see pre filled examples ).
+						<small lang-target="bot-command-output-legend" class="content-text">
 						</small>
 					</div>
 				</div>
