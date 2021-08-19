@@ -143,8 +143,8 @@ var botCommandsJson = JSON.parse(\`
 
         text += `
     {
-        "commandString" : "` + commandString + `",
-        "commandOutput" : "` + commandOutput + `"
+        "commandString" : "` + e.commandString + `",
+        "commandOutput" : "` + e.commandOutput + `"
     }`;
 
         if ( i !== botCommandsArray.length - 1 ) {
@@ -169,10 +169,10 @@ function addVideo() {
                 <input class="form-control video-file-name" type="text" value="" />
             </div>
             <div class="col-1">
-                <input class="form-control video-delay" type="text" value="" />
+                <input class="form-control video-delay" type="text" value="60" />
             </div>
             <div class="col-1">
-                <input class="form-control video-volume" type="text" value="" />
+                <input class="form-control video-volume" type="text" value="0.5" />
             </div>
             <div class="col-1">
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
@@ -190,10 +190,10 @@ function addSound() {
                 <input class="form-control sound-file-name" type="text" value="" />
             </div>
             <div class="col-1">
-                <input class="form-control sound-delay" type="text" value="" />
+                <input class="form-control sound-delay" type="text" value="30" />
             </div>
             <div class="col-1">
-                <input class="form-control sound-volume" type="text" value="" />
+                <input class="form-control sound-volume" type="text" value="0.5" />
             </div>
             <div class="col-1">
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>

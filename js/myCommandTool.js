@@ -18,41 +18,42 @@ $(function(){
 	/*
 		Search Command for Correspondance in Json
 	*/
-	function findCorrespondance (channel, tags, commandString) {
+	function checkCorrespondance (channel, tags, message) {
+		let basecommandString = message.substr(1).split(' ')[0];
 
-		if ( tags.username === channelName && ( [pauseVideos,resumeVideos,pauseSounds,resumeSounds].includes(commandString) ) ) {
-			if ( pauseVideos === commandString ) {
+		if ( tags.username === channelName && ( [pauseVideos,resumeVideos,pauseSounds,resumeSounds].includes(basecommandString) ) ) {
+			if ( pauseVideos === basecommandString ) {
 				videoQ.stop();
 			}
 
-			if ( resumeVideos === commandString ) {
+			if ( resumeVideos === basecommandString ) {
 				videoQ.resume();
 			}
 
-			if ( pauseSounds === commandString ) {
+			if ( pauseSounds === basecommandString ) {
 				soundQ.stop();
 			}
 
-			if ( resumeSounds === commandString ) {
+			if ( resumeSounds === basecommandString ) {
 				soundQ.resume();
 			}
 		}
 
 		for ( var i = 0; i < videosJson.length; i++ ) {
-			if ( videosJson[i].command === commandString ) {
+			if ( videosJson[i].command === basecommandString ) {
 				videoQ.push(videosJson[i]);
 			}
 		}
 
 		for ( var i = 0; i < soundsJson.length; i++ ) {
-			if ( soundsJson[i].command === commandString ) {
+			if ( soundsJson[i].command === basecommandString ) {
 				soundQ.push(soundsJson[i]);
 			}
 		}
 
 		if ( noBot === false ) {
 
-			if ( commandString === displayAll ){
+			if ( basecommandString === displayAll ){
 				let output = "";
 
 				// Video Message
@@ -91,7 +92,7 @@ $(function(){
 				output = "Bot Commands: " + displayAll + " | ";
 
 				for ( var i = 0; i < botCommandsJson.length; i++ ) {
-					if ( ( output.length + botCommandsJson[i].command.length + " | ".length ) >= 500 ) {
+					if ( ( output.length + botCommandsJson[i].commandString.length + " | ".length ) >= 500 ) {
 						output = output.slice(0,-3);
 						client.say(channel,output);
 						output = "Bot Commands: ";
@@ -106,11 +107,38 @@ $(function(){
 			}
 
 			for ( var i = 0; i < botCommandsJson.length; i++ ) {
-				if ( botCommandsJson[i].commandString == commandString ) {
-					client.say(channel, botCommandsJson[i].commandOutput.replace(/\{username\}/g,tags.username));
+				if ( botCommandsJson[i].commandString.split(' ')[0] == basecommandString ) {
+					manageBotCommands(channel, tags, message, botCommandsJson[i]);
 				}
 			}
 		}
+	}
+
+	/*
+		Manage Bot Commands
+	*/
+	function manageBotCommands(channel, tags, message, botCommandInfos) {
+		let output = "";
+
+		if ( botCommandInfos.commandString.split(' ').length === 1 ) { // Simple command
+			output = botCommandInfos.commandOutput;
+
+		} else { // Command with parts
+
+			commandParts = botCommandInfos.commandString.split(' ');
+			inputParts = message.substr(1).split(' ');
+			output = botCommandInfos.commandOutput;
+
+			for ( var i = 1; i < commandParts.length; i++ ) {
+				reg = new RegExp(escapeRegExp(commandParts[i]),'g');
+				output = output.replace(reg,inputParts[i]);
+			}
+		}
+
+		// Always replace the special parameter username if found
+		output = output.replace(/\{username\}/g,tags.username);
+
+		client.say(channel, output);
 	}
 
 	/*
@@ -156,9 +184,7 @@ $(function(){
 		// console.log(tags);
 		// console.log(self);
 		if ( /^!.*/.test(message) ) {
-			// This is a command, retrieve it and check for correspondance
-			let command = message.substr(1).split(' ')[0];
-			findCorrespondance(channel, tags, command);
+			checkCorrespondance(channel, tags, message);
 		}
 	});
 });
