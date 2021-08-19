@@ -1,17 +1,17 @@
 ﻿# My Twich Command Tool
 [Download Latest Release](https://github.com/Revingbell/my-twitch-video-and-sound-commands/releases) (download the archive of your choice and unpack it where you want in your filesystem).
 
-*Read this in another language: [English](README.md), [Français](README.fr.md).*
+*Read this in another language: [English](README•md), [Français](README.fr•md).*
 
 ## How to use:
 
 ### Update Config File From v1.1.0
-Put your old `config.js` file inside the `js` folder, then open the file `updateConfigFile.html` in the web browser of your choice.  
+Put your old `config•js` file inside the `js` folder, then open the file `updateConfigFile.html` in the web browser of your choice.  
 You will be prompted to download the updated version of the file, save it inside the `js` folder. You can start using v1.2.0.
 
 ### Add video and sound files
 Put all video files in the `videos` folder, and all sounds in the `sounds` folder.
-> :warning: **Video files with `.mov` extension do not work**
+> :warning: **Video files with `•mov` extension do not work**
 
 ### Parametrize the program
 Open the file `myCommandEditor.html` with your preferred web browser (Tested on Firefox).  
@@ -48,14 +48,14 @@ Required only for `Bot Commands` to work.
 
 
 #### Bot Commands
-![image](https://user-images.githubusercontent.com/17751686/129709198-fb9930ac-82a4-47c8-9a4b-987176a7cc0f.png)
+![image](https://user-images.githubusercontent.com/17751686/130066746-bbd26c2b-763a-4a72-877c-5b2e060fc6e1.png)
 - `Display All Commands` : This command will display all video/sound/bot commands in the chat in 3 distinct messages.
 - Bot Commands
   -  `Command` : Command that triggers the bot message.
-  -  `Ouput` : Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command.
+  -  `Ouput` : Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command. If you want to make multipart commands, just use the same replaceable string inside the Command String and the Command Output. i•e. "$1" or "{a}" etc... ( see pre filled examples ).
 
 #### Export
-Hit this button to download the new version of your `config.js` file, replace it inside your `js` folder.
+Hit this button to download the new version of your `config•js` file, replace it inside your `js` folder.
 
 ## Add to OBS
 
