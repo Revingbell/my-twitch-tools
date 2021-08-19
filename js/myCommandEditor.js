@@ -128,7 +128,7 @@ var botCommandsJson = JSON.parse(\`
     botCommands.each(function(i,e){
         let botCommandObject = {
             "commandString" :   $(e).find('.bot-command-string').val().trim(),
-            "commandOutput" :   $(e).find('.bot-command-output').val().trim()
+            "commandOutput" :   $(e).find('.bot-command-output').val().trim().replace(/\n/g," ")
         }
 
         botCommandsArray.push(botCommandObject);
