@@ -17,14 +17,14 @@ Mettez tous vos fichiers vidéo dans le dossier `videos`, et tous les fichiers a
 ### Paramétrer le programme
 Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (Testé sur Chrome et Firefox).  
 
-#### Global Parameters (Paramètres globaux)
-![image](https://user-images.githubusercontent.com/17751686/128506855-18990827-33b2-4125-b309-81b9c533c354.png)
+#### Paramètres Globaux
+![image](https://user-images.githubusercontent.com/17751686/130131488-1fc2e569-1fd7-470e-b5de-280b9478e79e.png)
 - `Chaîne Twitch` : Nom de la chaîne. Ce programme ecoutera le chat de cette chaîne pour y repérer les commandes commençant par un `!`. Obligatoire pour le fonctionnement de ce programme.
 - `Utilisateur du Chat` : Nom de l'utilisateur (peut être votre nom de compte, ou le nom d'un compte de bot créé spécifiquement à cet effet) qui écrira dans le chat. Ce paramètre n'est requis que pour l'utlisation des `Bot Commands`.
 - `Clé d'authentification Oauth` : Connectez vous au lien: [Obtenir votre clé d'authentification](https://twitchapps.com/tmi/) avec le compte spécifié comme `Chat User` pour récupérer sa clé d'authentification. Ne fournissez jamais cette clé à personne d'autre. En cas de doute, retourner sur le lien pour générer une nouvelle clé et invalider l'ancienne. Ce paramètre n'est requis que pour l'utlisation des `Bot Commands`.
 
-#### Video Parameters (Paramètres Vidéo)
-![image](https://user-images.githubusercontent.com/17751686/128507019-b0af7871-7d57-4e38-8648-6fd0b10119eb.png)
+#### Paramètres Vidéo
+![image](https://user-images.githubusercontent.com/17751686/130131528-2a0e98ac-c0ae-4847-ad03-76e6787bff4c.png)
 - `Commande de mise en Pause des Vidéos` : Chaîne de caractères de la commande pour mettre les vidéos en pause. Cette commande ne répondra qu'au propriétaire de la chaîne.
 - `Commande de Reprise des Vidéos` : Chaîne de caractères de la commande pour redémarrer les vidéos. Cette commande ne répondra qu'au propriétaire de la chaîne.
 - `Délai Global des Vidéos` : Délai minimum entre deux vidéos en secondes. Si une vidéo est d'une durée plus longue que ce délai, sa durée sera utilisée à la place de cette valeur.
@@ -34,8 +34,8 @@ Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (
   -  `Délai` : Délai minimum entre deux utilisation de cette commande, en secondes.
   -  `Volume` : Volume de la vidéo, valeur comprise entre 0 et 1. ( utilisez le `.` pour délimiter les décimales )
 
-#### Sound Parameters (Paramètres Audio)
-![image](https://user-images.githubusercontent.com/17751686/128507126-82b62ca4-201f-497b-a998-def265c19a38.png)
+#### Paramètres Son
+![image](https://user-images.githubusercontent.com/17751686/130131567-a3ef2e5d-b990-49d3-ae2c-0fafa61d746e.png)
 - `Commande de mise en Pause des Sons` : Chaîne de caractères de la commande pour mettre les sons en pause. Cette commande ne répondra qu'au propriétaire de la chaîne.
 - `Commande de Reprise des Sons` : Chaîne de caractères de la commande pour redémarrer les sons. Cette commande ne répondra qu'au propriétaire de la chaîne.
 - `Délai Global des Sons` : Délai minimum entre deux sons en secondes. Si un son est d'une durée plus longue que ce délai, sa durée sera utilisée à la place de cette valeur.
@@ -45,17 +45,22 @@ Ouvrez le fichier `myCommandEditor.html` dans le navigateur web de votre choix (
   -  `Délai` : Délai minimum entre deux utilisation de cette commande, en secondes.
   -  `Volume` : Volume du son, valeur comprise entre 0 et 1. ( utilisez le `.` pour délimiter les décimales )
 
-#### Bot Commands (Commandes du bot)
-![image](https://user-images.githubusercontent.com/17751686/130066746-bbd26c2b-763a-4a72-877c-5b2e060fc6e1.png)
+#### Commandes du bot
+![image](https://user-images.githubusercontent.com/17751686/130131609-13c9b762-db61-4fd0-8123-71fe59e6ec9e.png)
 - `Afficher toutes les Commandes` : Cette commande demandera au bot d'écrire la liste des commandes disponibles dans le chat en (au moins) 3 messages distincts ( videos / sons / commandes du bot).
 - Bot Commands
   -  `Commande` : Chaîne de caractères de la commande pour déclencher la réponse du bot.
   -  `Sortie Chat` : Réponse du bot à cette commande dans le chat. L'utilisation de '{username}' comme variable à laquelle sera substitué le nom de l'utilisateur ayant lancé la commande est possible. Si vous souhaitez des commandes multi parties, il vous suffit d'utiliser la même chaîne de caractère remplaçable dans la chaîne de la commande et dans le message du bot. i•e. "$1" ou "{a}" etc... ( voir les exemples pré-remplis )
 
-#### Export (Exporter)
+#### Langage
+Choisissez l'un des langages disponibles pour l'interface:
+- Anglais
+- Français
+
+#### Exporter
 Appuyez sur ce bouton une fois toutes vos modifications réalisées pour télécharger la nouvelle version de votre fichier `config•js`, et remplacez le dans le dossier`js`.
 
-## Add to OBS (Ajouter à OBS)
+## Ajouter à OBS
 Dernière étape, ajouter une source web dans OBS:
 
 ![image](https://user-images.githubusercontent.com/17751686/129710382-8d28db74-6533-483c-9a7f-4137b4b3692e.png)
