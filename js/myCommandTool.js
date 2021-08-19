@@ -104,11 +104,11 @@ $(function(){
 
 				client.say(channel,output);
 
-			}
-
-			for ( var i = 0; i < botCommandsJson.length; i++ ) {
-				if ( botCommandsJson[i].commandString.split(' ')[0] == basecommandString ) {
-					manageBotCommands(channel, tags, message, botCommandsJson[i]);
+			} else {
+				for ( var i = 0; i < botCommandsJson.length; i++ ) {
+					if ( botCommandsJson[i].commandString.split(' ')[0] == basecommandString ) {
+						manageBotCommands(channel, tags, message, botCommandsJson[i]);
+					}
 				}
 			}
 		}
@@ -138,6 +138,15 @@ $(function(){
 		// Always replace the special parameter username if found
 		output = output.replace(/\{username\}/g,tags.username);
 
+		// Manage outputs longer than 500 characters
+		while (output.length >= 500 ) {
+			let lastIndex = output.substr(0,500).lastIndexOf(' ');
+
+			console.log(output.substr(0,lastIndex));
+			client.say(channel, output.substr(0,lastIndex));
+
+			output = output.substr(lastIndex);
+		}
 		client.say(channel, output);
 	}
 
