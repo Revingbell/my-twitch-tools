@@ -4,9 +4,17 @@ class videoQueue {
 		this.q = [];
 		this.delay = delay;
 		this.paused = false;
+		this.stopped = false;
 	}
 
-	push( video )  { this.q.push( video ); }
+	push( video )  { if ( this.stopped === false ) { this.q.push( video ); } }
+
+	add( video ) {
+		$('#my-videos').append(`
+		<video autoplay width="800" height="600" src="videos/` + video.file + `" id="` + video.command + `">
+		</video>`);
+		$('#' + video.command)[0].volume = video.volume;
+	}
 
 	/*
 		Hide Video Element after its duration, then after delay remove it for another use
@@ -29,12 +37,20 @@ class videoQueue {
 
 	stop() {
 		this.paused = true;
+		this.stopped = true;
 		this.flush();
+	}
+
+	start() {
+		this.paused = false;
+		this.stopped = false;
 	}
 
 	pause() { this.paused = true; }
 
-	resume() { this.paused = false;	}
+	resume() {
+		this.paused = false;
+	}
 
 	flush() { this.q = []; }
 
@@ -42,14 +58,10 @@ class videoQueue {
 		if ( !this.paused && this.q.length !== 0 ) {
 			let video = this.q.shift()
 			if ( $('#'+video.command).length === 0 ) {
-				$('#my-videos').append(`
-				<video autoplay width="800" height="600" src="videos/` + video.file + `" id="` + video.command + `">
-				</video>`);
-				$('#' + video.command)[0].volume = video.volume;
+				this.add(video);
 				this.pause();
 				this.remove(video);
 			}
 		}
-		return true;
 	}
 }

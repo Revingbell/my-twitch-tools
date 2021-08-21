@@ -4,9 +4,17 @@ class soundQueue {
 		this.q = [];
 		this.delay = delay;
 		this.paused = false;
+		this.stopped = false;
 	}
 
-	push( sound )  { this.q.push( sound ); }
+	push( sound )  { if ( this.stopped === false ) { this.q.push( sound ); } }
+
+	add( sound ) {
+		$('#my-sounds').append(`
+					<audio autoplay src="sounds/` + sound.file + `" class='hidden' id="` + sound.command + `">
+					</audio>`);
+		$('#' + sound.command)[0].volume = sound.volume;
+	}
 
 	/*
 		Remove Sound Element after delay to enable another use
@@ -23,16 +31,22 @@ class soundQueue {
 		}.bind(this),500);
 	}
 
-	getLength() { return this.q.length; }
-
 	stop() {
 		this.paused = true;
+		this.stopped = true;
 		this.flush();
+	}
+
+	start() {
+		this.paused = false;
+		this.stopped = false;
 	}
 
 	pause() { this.paused = true; }
 
-	resume() { this.paused = false; }
+	resume() {
+		this.paused = false;
+	}
 
 	flush() { this.q = []; }
 
@@ -40,14 +54,10 @@ class soundQueue {
 		if ( !this.paused && this.q.length !== 0 ) {
 			let sound = this.q.shift();
 			if ( $('#'+sound.command).length === 0 ) {
-				$('#my-sounds').append(`
-					<audio autoplay src="sounds/` + sound.file + `" class='hidden' id="` + sound.command + `">
-					</audio>`);
-				$('#' + sound.command)[0].volume = sound.volume;
+				this.add(sound);
 				this.pause();
 				this.remove(sound);
 			}
-
 		}
 	}
 }
