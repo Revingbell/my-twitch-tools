@@ -1,0 +1,24 @@
+.message {
+	font-size:25px;
+	font-family: 'Lucida Sans Unicode';
+}
+
+.emote {
+	vertical-align: middle;
+}
+.name {
+	font-weight:bold;
+}
+
+.messageTime {
+	font-weight: lighter;
+	color: gray;
+}
+
+#my-chat {
+	/*background-color: black;*/ /*if empty background will be transparent*/
+	color: white;
+	position: absolute;
+	bottom:0;
+	padding: 10px;
+}
