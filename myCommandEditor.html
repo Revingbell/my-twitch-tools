@@ -15,74 +15,75 @@
 		<nav>
 			<ul>
 				<li>
-					<a lang-target="global-menu" display-target="global-menu" class="active content-text" onclick="switchMenu($(this))"></a>
+					<a lang-target="global-menu" display-target="global-menu" class="active" onclick="switchMenu($(this))"></a>
 				</li>
 				<li>
-					<a lang-target="videos-menu" display-target="videos-menu" class="content-text" onclick="switchMenu($(this))"></a>
+					<a lang-target="videos-menu" display-target="videos-menu" onclick="switchMenu($(this))"></a>
 				</li>
 				<li>
-					<a lang-target="sounds-menu" display-target="sounds-menu" class="content-text" onclick="switchMenu($(this))"></a>
+					<a lang-target="sounds-menu" display-target="sounds-menu" onclick="switchMenu($(this))"></a>
 				</li>
 				<li>
-					<a lang-target="bot-commands-menu" display-target="bot-commands-menu" class="content-text" onclick="switchMenu($(this))"></a>
+					<a lang-target="bot-commands-menu" display-target="bot-commands-menu" onclick="switchMenu($(this))"></a>
 				</li>
 				<li class="menu-deroulant">
-					<a lang-target="language-menu" class="content-text" href="#"></a>
+					<a lang-target="language-menu" href="#"></a>
+					<input type="hidden" id="language"/ value="en">
 			      	<ul class="sous-menu">
 						<li>
-							<a lang-target="english-menu" class="content-text" onclick="setLanguage('en')"></a>
+							<a lang-target="english-menu" onclick="setLanguage('en')"></a>
 						</li>
 						<li>
-							<a lang-target="french-menu" class="content-text" onclick="setLanguage('fr')"></a>
+							<a lang-target="french-menu" onclick="setLanguage('fr')"></a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<a lang-target="export-menu" id="export" class="content-text" onclick="exportFile()"></a>
+					<a lang-target="export-menu" id="export" onclick="exportFile()"></a>
 				</li>
 			</ul>
 		</nav>
 		<div id="global-menu" class="content-part" >
-			<h2 lang-target="global-title" class="content-text">
+			<h2 lang-target="global-title">
 			</h2>
 			<hr class="solid">
 			<div class="row form-group align-items-center">
 				<div class="col-2">
-					<label lang-target="channel-label" class="important content-text">
+					<label lang-target="channel-label" class="important">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="twitch-channel"/>
 				</div>
 				<div class="col-8">
-					<small lang-target="channel-legend" class="content-text">
+					<small lang-target="channel-legend">
 					</small>
 				</div>
 			</div>
 			<hr class="solid">
 			<div class="row form-group align-items-center">
 				<div class="col-2">
-					<label lang-target="chat-user-label" class="important content-text">
+					<label lang-target="chat-user-label" class="important">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="twitch-user"/>
 				</div>
 				<div class="col-8">
-					<small lang-target="chat-user-legend" class="content-text">
+					<small lang-target="chat-user-legend">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-2">
-					<label lang-target="chat-oauth-label" class="important content-text">
+					<label lang-target="chat-oauth-label" class="important">
 					</label>
 				</div>
 				<div class="col-4">
 					<input type="text" class="form-control" id="twitch-pwd"/>
 				</div>
 				<div class="col-6">
-					<small lang-target="chat-oauth-legend" class="content-text">
+					<small lang-target="chat-oauth-legend">
 					</small>
 				</div>
 			</div>
@@ -90,110 +91,124 @@
 		<div id="videos-menu" class="content-part d-none">
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label lang-target="pause-videos-label" class="important content-text">
+					<label lang-target="pause-videos-label" class="important">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="pause-videos"/>
 				</div>
 				<div class="col-6">
-					<small lang-target="pause-videos-legend" class="content-text">
+					<small lang-target="pause-videos-legend">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label lang-target="resume-videos-label" class="important content-text">
+					<label lang-target="resume-videos-label" class="important">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="resume-videos"/>
 				</div>
 				<div class="col-6">
-					<small lang-target="resume-videos-legend" class="content-text">
+					<small lang-target="resume-videos-legend">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label lang-target="delay-videos-label" class="important content-text">
+					<label lang-target="delay-videos-label" class="important">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="global-video-delay" placeholder="Delay in seconds"/>
 				</div>
 				<div class="col-6">
-					<small lang-target="delay-videos-legend" class="content-text">
+					<small lang-target="delay-videos-legend">
 					</small>
 				</div>
 			</div>
-			<h2 lang-target="videos-title" class="content-text">
+			<h2 lang-target="videos-title">
 			</h2>
 			<hr class="solid">
 			<div id="videos">
 				<div class="text-center row header">
-					<div class="col-4">
-						<label lang-target="video-command-title" class="important content-text"></label>
+					<div class="col-3">
+						<label lang-target="video-command-title" class="important"></label>
 					</div>
-					<div class="col-5">
-						<label lang-target="video-file-title" class="important content-text">
+					<div class="col-3">
+						<label lang-target="video-file-title" class="important">
+						</label>
+					</div>
+					<div class="col-3">
+						<label lang-target="video-right-title" class="important">
 						</label>
 					</div>
 					<div class="col-1">
-						<label lang-target="video-delay-title" class="important content-text">
+						<label lang-target="video-delay-title" class="important">
 						</label>
 					</div>
 					<div class="col-1">
-						<label lang-target="video-volume-title" class="important content-text">
+						<label lang-target="video-volume-title" class="important">
 						</label>
 					</div>
 					<div class="col-1">
-						<button lang-target="add-button" class="btn btn-outline-primary content-text" type="button" onclick="addVideo()"></button>
+						<button lang-target="add-button" class="btn btn-outline-primary" type="button" onclick="addVideo()"></button>
 					</div>
 				</div>
 			</div>
 			<br>
 			<h4>
-				<i lang-target="legend-title" class="content-text"></i>
+				<i lang-target="legend-title"></i>
 			</h4>
 			<div class="legend">
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="video-command-label" class="important content-text">
+						<label lang-target="video-command-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="video-command-legend" class="content-text">
+						<small lang-target="video-command-legend">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="video-file-label" class="important content-text">
+						<label lang-target="video-file-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="video-file-legend" class="content-text">
+						<small lang-target="video-file-legend">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="video-delay-label" class="important content-text">
+						<label lang-target="video-right-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="video-delay-legend" class="content-text">
+						<small lang-target="video-right-legend">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="video-volume-label" class="important content-text">
+						<label lang-target="video-delay-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="video-volume-legend" class="content-text">
+						<small lang-target="video-delay-legend">
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label lang-target="video-volume-label" class="important">
+						</label>
+					</div>
+					<div class="col-10">
+						<small lang-target="video-volume-legend">
 						</small>
 					</div>
 				</div>
@@ -202,112 +217,126 @@
 		<div id="sounds-menu" class="content-part d-none">
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label lang-target="pause-sounds-label" class="important content-text">
+					<label lang-target="pause-sounds-label" class="important">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="pause-sounds"/>
 				</div>
 				<div class="col-6">
-					<small lang-target="pause-sounds-legend" class="content-text">
+					<small lang-target="pause-sounds-legend">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label lang-target="resume-sounds-label" class="important content-text">
+					<label lang-target="resume-sounds-label" class="important">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="resume-sounds"/>
 				</div>
 				<div class="col-6">
-					<small lang-target="resume-sounds-label" class="content-text">
+					<small lang-target="resume-sounds-label">
 					</small>
 				</div>
 			</div>
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label lang-target="delay-sounds-label" class="important content-text">
+					<label lang-target="delay-sounds-label" class="important">
 					</label>
 				</div>
 				<div class="col-2">
 					<input type="text" class="form-control" id="global-sound-delay" placeholder="Delay in seconds"/>
 				</div>
 				<div class="col-6">
-					<small lang-target="delay-sounds-label" class="content-text">
+					<small lang-target="delay-sounds-label">
 					</small>
 				</div>
 			</div>
-			<h2 lang-target="sounds-title" class='content-text'>
+			<h2 lang-target="sounds-title">
 			</h2>
 			<hr class="solid">
 			<div id="sounds">
 				<div class="text-center row header">
-					<div class="col-4">
-						<label lang-target="sound-command-title" class="important content-text">
+					<div class="col-3">
+						<label lang-target="sound-command-title" class="important">
 						</label>
 					</div>
-					<div class="col-5">
-						<label lang-target="sound-file-title" class="important content-text">
+					<div class="col-3">
+						<label lang-target="sound-file-title" class="important">
+						</label>
+					</div>
+					<div class="col-3">
+						<label lang-target="sound-right-title" class="important">
 						</label>
 					</div>
 					<div class="col-1">
-						<label lang-target="sound-delay-title" class="important content-text">
+						<label lang-target="sound-delay-title" class="important">
 							Delay
 						</label>
 					</div>
 					<div class="col-1">
-						<label lang-target="sound-volume-title" class="important content-text">
+						<label lang-target="sound-volume-title" class="important">
 						</label>
 					</div>
 					<div class="col-1">
-						<button lang-target="add-button" class="btn btn-outline-primary content-text" type="button" onclick="addSound()"></button>
+						<button lang-target="add-button" class="btn btn-outline-primary" type="button" onclick="addSound()"></button>
 					</div>
 				</div>
 			</div>
 			<br>
 			<h4>
-				<i lang-target="legend-title" class="content-text"></i>
+				<i lang-target="legend-title"></i>
 			</h4>
 			<div class="legend">
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="sound-command-label" class="important content-text">
+						<label lang-target="sound-command-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="sound-command-legend" class="content-text">
+						<small lang-target="sound-command-legend">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="sound-file-label" class="important content-text">
+						<label lang-target="sound-file-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="sound-file-legend" class="content-text">
+						<small lang-target="sound-file-legend">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="sound-delay-label" class="important content-text">
+						<label lang-target="sound-right-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="sound-delay-legend" class="content-text">
+						<small lang-target="sound-right-legend">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="sound-volume-label" class="important content-text">
+						<label lang-target="sound-delay-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="sound-volume-legend" class="content-text">
+						<small lang-target="sound-delay-legend">
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label lang-target="sound-volume-label" class="important">
+						</label>
+					</div>
+					<div class="col-10">
+						<small lang-target="sound-volume-legend">
 						</small>
 					</div>
 				</div>
@@ -316,57 +345,71 @@
 		<div id="bot-commands-menu" class="content-part d-none">
 			<div class="row form-group align-items-center">
 				<div class="col-4">
-					<label lang-target="display-all-command-label" class="important content-text">
+					<label lang-target="display-all-command-label" class="important">
 					</label>
 				</div>
 				<div class="col-3">
 					<input type="text" class="form-control" id="display-all" />
 				</div>
 				<div class="col-5">
-					<small lang-target="display-all-command-legend" class="content-text">
+					<small lang-target="display-all-command-legend">
 					</small>
 				</div>
 			</div>
-			<h2 lang-target="bot-commands-title" class="content-text">
+			<h2 lang-target="bot-commands-title">
 			</h2>
 			<hr class="solid">
 			<div id="bot-commands">
 				<div class="text-center row header">
-					<div class="col-4">
-						<label lang-target="bot-command-string-title" class="important content-text">
+					<div class="col-3">
+						<label lang-target="bot-command-string-title" class="important">
 						</label>
 					</div>
-					<div class="col-7">
-						<label lang-target="bot-command-output-title" class="important content-text">
+					<div class="col-5">
+						<label lang-target="bot-command-output-title" class="important">
+						</label>
+					</div>
+					<div class="col-3">
+						<label lang-target="bot-command-right-title" class="important">
 						</label>
 					</div>
 					<div class="col-1">
-						<button lang-target="add-button" class="btn btn-outline-primary content-text" type="button" onclick="addBotCommand()"></button>
+						<button lang-target="add-button" class="btn btn-outline-primary" type="button" onclick="addBotCommand()"></button>
 					</div>
 				</div>
 			</div>
 			<br>
 			<h4>
-				<i lang-target="legend-title" class="content-text"></i>
+				<i lang-target="legend-title"></i>
 			</h4>
 			<div class="legend">
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="bot-command-string-label" class="important content-text">
+						<label lang-target="bot-command-string-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="bot-command-string-legend" class="content-text">
+						<small lang-target="bot-command-string-legend">
 						</small>
 					</div>
 				</div>
 				<div class="row form-group align-items-center">
 					<div class="col-2">
-						<label lang-target="bot-command-output-label" class="important content-text">
+						<label lang-target="bot-command-output-label" class="important">
 						</label>
 					</div>
 					<div class="col-10">
-						<small lang-target="bot-command-output-legend" class="content-text">
+						<small lang-target="bot-command-output-legend">
+						</small>
+					</div>
+				</div>
+				<div class="row form-group align-items-center">
+					<div class="col-2">
+						<label lang-target="bot-command-right-label" class="important">
+						</label>
+					</div>
+					<div class="col-10">
+						<small lang-target="bot-command-right-legend">
 						</small>
 					</div>
 				</div>

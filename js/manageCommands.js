@@ -8,11 +8,11 @@ function checkCorrespondance ( client, channel, tags, message ) {
 
 		return;
 
-	} else if ( checkVideoCommands(client, channel, baseCommandString) ) {
+	} else if ( checkVideoCommands(client, channel, tags, baseCommandString) ) {
 
 		return;
 
-	} else if ( checkSoundCommands(client, channel, baseCommandString) ) {
+	} else if ( checkSoundCommands(client, channel, tags, baseCommandString) ) {
 
 		return;
 	}
@@ -55,11 +55,11 @@ function checkChannelOwnerCommands ( tags, command ) {
 /*
 	Check if command is for a Video
 */
-function checkVideoCommands ( client, channel, command ) {
+function checkVideoCommands ( client, channel, tags, command ) {
 
 	for ( var i = 0; i < videosJson.length; i++ ) {
 
-		if ( videosJson[i].command === command ) {
+		if ( videosJson[i].command === command  && checkCommandRights(tags, videosJson[i].right) ) {
 
 			if ( $('#'+videosJson[i].command).length === 0 ) { // video is cleared to be pushed into the queue
 
@@ -81,13 +81,13 @@ function checkVideoCommands ( client, channel, command ) {
 /*
 	Check if command is for a Sound
 */
-function checkSoundCommands ( client, channel, command ) {
+function checkSoundCommands ( client, channel, tags, command ) {
 
 	for ( var i = 0; i < soundsJson.length; i++ ) {
 
 		if ( soundsJson[i].command === command ) {
 
-			if ( $('#'+soundsJson[i].command).length === 0 ) { // sound is cleared to be pushed into the queue
+			if ( $('#'+soundsJson[i].command).length === 0 && checkCommandRights(tags, soundsJson[i].right) ) { // sound is cleared to be pushed into the queue
 
 				soundQ.push(soundsJson[i]);
 
@@ -112,7 +112,7 @@ function checkBotCommands( client, channel, tags, message ) {
 
 	if ( baseCommandString === displayAll ){
 
-		return manageDisplayAll(client, channel);
+		return manageDisplayAll(client, channel, tags);
 
 	} else {
 
@@ -123,22 +123,41 @@ function checkBotCommands( client, channel, tags, message ) {
 /*
 	Manage the "display all commands" command
 */
-function manageDisplayAll( client, channel ) {
+function manageDisplayAll( client, channel, tags ) {
 	let output = "";
+
+	if ( tags.badges !== null ) {
+
+		if ( tags.badges.broadcaster === "1" ) {
+
+			client.say(channel, "Command List for the Streamer");
+
+		} else if ( tags.badges.moderator === "1" ) {
+
+			client.say(channel, "Command List for the Moderators");
+
+		} else if ( tags.badges.vip === "1" ) {
+
+			client.say(channel, "Command List for the VIPs");
+		}
+	}
 
 	// Video Message
 	output += "Videos: ";
 
 	for ( var i = 0; i < videosJson.length; i++ ) {
 
-		if ( ( output.length + videosJson[i].command.length + " | ".length ) >= 500 ) {
+		if ( checkCommandRights(tags, videosJson[i].right) ) {
 
-			output = output.slice(0,-3);
-			client.say(channel,output);
-			output = "Videos: ";
+			if ( ( output.length + videosJson[i].command.length + " | ".length ) >= 500 ) {
+
+				output = output.slice(0,-3);
+				client.say(channel,output);
+				output = "Videos: ";
+			}
+
+			output += videosJson[i].command + " | ";
 		}
-
-		output += videosJson[i].command + " | ";
 	}
 
 	output = output.slice(0,-3);
@@ -150,14 +169,17 @@ function manageDisplayAll( client, channel ) {
 
 	for ( var i = 0; i < soundsJson.length; i++ ) {
 
-		if ( ( output.length + soundsJson[i].command.length + " | ".length ) >= 500 ) {
+		if ( checkCommandRights(tags, soundsJson[i].right) ) {
 
-			output = output.slice(0,-3);
-			client.say(channel,output);
-			output = "Sounds: ";
+			if ( ( output.length + soundsJson[i].command.length + " | ".length ) >= 500 ) {
+
+				output = output.slice(0,-3);
+				client.say(channel,output);
+				output = "Sounds: ";
+			}
+
+			output += soundsJson[i].command + " | ";
 		}
-
-		output += soundsJson[i].command + " | ";
 	}
 
 	output = output.slice(0,-3);
@@ -169,14 +191,17 @@ function manageDisplayAll( client, channel ) {
 
 	for ( var i = 0; i < botCommandsJson.length; i++ ) {
 
-		if ( ( output.length + botCommandsJson[i].commandString.length + " | ".length ) >= 500 ) {
+		if ( checkCommandRights(tags, botCommandsJson[i].commandRight) ) {
 
-			output = output.slice(0,-3);
-			client.say(channel,output);
-			output = "Bot Commands: ";
+			if ( ( output.length + botCommandsJson[i].commandString.length + " | ".length ) >= 500 ) {
+
+				output = output.slice(0,-3);
+				client.say(channel,output);
+				output = "Bot Commands: ";
+			}
+
+			output += botCommandsJson[i].commandString + " | ";
 		}
-
-		output += botCommandsJson[i].commandString + " | ";
 	}
 
 	output = output.slice(0,-3);
@@ -194,7 +219,7 @@ function manageBotCommands( client, channel, tags, message ) {
 
 	for ( var i = 0; i < botCommandsJson.length; i++ ) {
 
-		if ( botCommandsJson[i].commandString.split(' ')[0] == baseCommandString ) {
+		if ( botCommandsJson[i].commandString.split(' ')[0] == baseCommandString  && checkCommandRights(tags, botCommandsJson[i].commandRight) ) {
 
 			let output = "";
 
@@ -234,4 +259,41 @@ function manageBotCommands( client, channel, tags, message ) {
 	}
 
 	return false;
+}
+
+/*
+	Calculate right to use command base on user badges
+*/
+function checkCommandRights( tags, rights ) {
+
+
+	if ( rights === "0" && tags.badges !== null ) {
+
+		if ( tags.badges.broadcaster === "1" ) { // Streamer only
+
+			return true;
+		}
+
+	} else if ( rights === "1" && tags.badges !== null ) {
+
+		if ( tags.badges.broadcaster === "1" || tags.badges.moderator === "1" ) { // Streamer or Moderator
+
+			return true;
+
+		}
+
+	} else if ( rights === "2" && tags.badges !== null ) {
+
+		if ( tags.badges.broadcaster === "1" || tags.badges.moderator === "1" || tags.badges.vip === "1" ) { // Streamer or Moderator or VIP
+
+			return true;
+
+		}
+
+	} else if ( rights === "3" ) { // Everyone
+
+		return true;
+	}
+
+	return false; // Noone (should not happen)
 }

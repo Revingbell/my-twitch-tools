@@ -30,6 +30,9 @@ frContentJson = JSON.parse(`
 	"video-file-title"				: "Nom du fichier",
 	"video-file-label"				: "Nom du fichier",
 	"video-file-legend"				: "Nom du fichier associé dans le dossier 'videos'",
+	"video-right-title"				: "Droits",
+	"video-right-label"				: "Droits",
+	"video-right-legend"			: "Qui peut utiliser cette commande (Streamer > Moderateur > VIP > Tout le monde)",
 	"video-delay-title"				: "Délai",
 	"video-delay-label"				: "Délai",
 	"video-delay-legend"			: "Délai minimum entre deux utilisation de cette commande, en secondes.",
@@ -49,6 +52,9 @@ frContentJson = JSON.parse(`
 	"sound-file-title"				: "Nom du fichier",
 	"sound-file-label"				: "Nom du fichier",
 	"sound-file-legend"				: "Nom du fichier associé dans le dossier 'sounds'",
+	"sound-right-title"				: "Droits",
+	"sound-right-label"				: "Droits",
+	"sound-right-legend"			: "Qui peut utiliser cette commande (Streamer > Moderateur > VIP > Tout le monde)",
 	"sound-delay-title"				: "Délai",
 	"sound-delay-label"				: "Délai",
 	"sound-delay-legend"			: "Délai minimum entre deux utilisation de cette commande, en secondes.",
@@ -63,6 +69,13 @@ frContentJson = JSON.parse(`
 	"bot-command-string-legend"		: "Chaîne de caractères de la commande pour déclencher la réponse du bot.",
 	"bot-command-output-title"		: "Output",
 	"bot-command-output-label"		: "Output",
-	"bot-command-output-legend"		: "Réponse du bot à cette commande dans le chat. L'utilisation de '{username}' comme variable à laquelle sera substitué le nom de l'utilisateur ayant lancé la commande est possible.<br>Si vous souhaitez des commandes multi parties, il vous suffit d'utiliser la même chaîne de caractère remplaçable dans la chaîne de la commande et dans le message du bot. i.e. '$1' ou '{a}' etc... ( voir les exemples pré-remplis )."
+	"bot-command-output-legend"		: "Réponse du bot à cette commande dans le chat. L'utilisation de '{username}' comme variable à laquelle sera substitué le nom de l'utilisateur ayant lancé la commande est possible.<br>Si vous souhaitez des commandes multi parties, il vous suffit d'utiliser la même chaîne de caractère remplaçable dans la chaîne de la commande et dans le message du bot. i.e. '$1' ou '{a}' etc... ( voir les exemples pré-remplis ).",
+	"bot-command-right-title"		: "Droits",
+	"bot-command-right-label"		: "Droits",
+	"bot-command-right-legend"		: "Qui peut utiliser cette commande (Streamer·euse > Modérateur·ice + Streamer·euse > VIP + précédents > Tout le monde)",
+	"right-option-streamer"			: "Streamer·euse",
+	"right-option-moderator"		: "Moderateur·ice",
+	"right-option-vip"				: "VIP",
+	"right-option-everyone"			: "Tout le monde"
 }
 `);

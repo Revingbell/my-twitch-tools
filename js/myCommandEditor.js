@@ -42,6 +42,7 @@ var videosJson = JSON.parse(\`
         let videoObject = {
             "command"   :   $(e).find('.video-command').val().trim(),
             "file"      :   $(e).find('.video-file-name').val().trim(),
+            "right"     :   $(e).find('.video-right').val(),
             "delay"     :   $(e).find('.video-delay').val(),
             "volume"    :   $(e).find('.video-volume').val()
         };
@@ -61,6 +62,7 @@ var videosJson = JSON.parse(\`
     {
         "command" : "` + e.command + `",
         "file" : "` + e.file + `",
+        "right": "` + e.right + `",
         "delay" : "` + e.delay + `",
         "volume" : "` + e.volume + `"
     }`;
@@ -87,6 +89,7 @@ var soundsJson = JSON.parse(\`
         let soundObject = {
             "command"   : $(e).find('.sound-command').val().trim(),
             "file"      : $(e).find('.sound-file-name').val().trim(),
+            "right"     : $(e).find('.sound-right').val(),
             "delay"     : $(e).find('.sound-delay').val(),
             "volume"    : $(e).find('.sound-volume').val()
         };
@@ -106,6 +109,7 @@ var soundsJson = JSON.parse(\`
     {
         "command" : "` + e.command + `",
         "file" : "` + e.file + `",
+        "right" : "` + e.right + `",
         "delay" : "` + e.delay + `",
         "volume" : "` + e.volume + `"
     }`;
@@ -128,7 +132,8 @@ var botCommandsJson = JSON.parse(\`
     botCommands.each(function(i,e){
         let botCommandObject = {
             "commandString" :   $(e).find('.bot-command-string').val().trim(),
-            "commandOutput" :   $(e).find('.bot-command-output').val().trim().replace(/\n/g," ").replace(/["]/g,"\\\\$&")
+            "commandOutput" :   $(e).find('.bot-command-output').val().trim().replace(/\n/g," ").replace(/["]/g,"\\\\$&"),
+            "commandRight"  :   $(e).find('.bot-command-right').val()
         }
 
         botCommandsArray.push(botCommandObject);
@@ -144,7 +149,8 @@ var botCommandsJson = JSON.parse(\`
         text += `
     {
         "commandString" : "` + e.commandString + `",
-        "commandOutput" : "` + e.commandOutput + `"
+        "commandOutput" : "` + e.commandOutput + `",
+        "commandRight"  : "` + e.commandRight + `"
     }`;
 
         if ( i !== botCommandsArray.length - 1 ) {
@@ -162,11 +168,19 @@ var botCommandsJson = JSON.parse(\`
 function addVideo() {
     $('#videos').append(`
         <div class="text-center form-group row align-items-center video">
-            <div class="col-4">
+            <div class="col-3">
                 <input class="form-control video-command" type="text"value="" />
             </div>
-            <div class="col-5">
+            <div class="col-3">
                 <input class="form-control video-file-name" type="text" value="" />
+            </div>
+            <div class="col-3">
+                <select class="form-control video-right">
+                    <option lang-target="right-option-streamer" value="0">Streamer</option>
+                    <option lang-target="right-option-moderator" value="1">Moderator</option>
+                    <option lang-target="right-option-vip" value="2">VIP</option>
+                    <option lang-target="right-option-everyone" value="3" selected>Everyone</option>
+                </select>
             </div>
             <div class="col-1">
                 <input class="form-control video-delay" type="text" value="60" />
@@ -178,16 +192,26 @@ function addVideo() {
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
             </div>
         </div>`);
+
+    setLanguage($('#language').val());
 }
 
 function addSound() {
     $('#sounds').append(`
         <div class="text-center form-group row align-items-center sound">
-            <div class="col-4">
+            <div class="col-3">
                 <input class="form-control sound-command" type="text" value="" />
             </div>
-            <div class="col-5">
+            <div class="col-3">
                 <input class="form-control sound-file-name" type="text" value="" />
+            </div>
+            <div class="col-3">
+                <select class="form-control sound-right">
+                    <option lang-target="right-option-streamer" value="0"></option>
+                    <option lang-target="right-option-moderator" value="1"></option>
+                    <option lang-target="right-option-vip" value="2"></option>
+                    <option lang-target="right-option-everyone" value="3" selected></option>
+                </select>
             </div>
             <div class="col-1">
                 <input class="form-control sound-delay" type="text" value="30" />
@@ -199,22 +223,34 @@ function addSound() {
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
             </div>
         </div>`);
+
+    setLanguage($('#language').val());
 }
 
 function addBotCommand() {
     $('#bot-commands').append(`
         <div class="text-center form-group row align-items-center bot-command">
-            <div class="col-4">
+            <div class="col-3">
                 <input class="form-control bot-command-string" type="text" value="" />
             </div>
-            <div class="col-7">
+            <div class="col-5">
                 <textarea class="form-control bot-command-output" value="" >`
                 +`</textarea>
+            </div>
+            <div class="col-3">
+                <select class="form-control bot-command-right">
+                    <option lang-target="right-option-streamer" value="0">Streamer</option>
+                    <option lang-target="right-option-moderator" value="1">Moderator</option>
+                    <option lang-target="right-option-vip" value="2">VIP</option>
+                    <option lang-target="right-option-everyone" value="3" selected>Everyone</option>
+                </select>
             </div>
             <div class="col-1">
                 <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
             </div>
         </div>`);
+
+    setLanguage($('#language').val());
 }
 
 function switchMenu(selectedMenu) {
@@ -251,11 +287,19 @@ $(function(){
     for ( let i = 0; i < videosJson.length; i++ ){
         $('#videos').append(`
             <div class="text-center form-group row align-items-center video">
-                <div class="col-4">
+                <div class="col-3">
                     <input class="form-control video-command" type="text" value="` + videosJson[i].command + `" />
                 </div>
-                <div class="col-5">
+                <div class="col-3">
                     <input class="form-control video-file-name" type="text" value="` + videosJson[i].file + `" />
+                </div>
+                <div class="col-3">
+                    <select class="form-control video-right">
+                        <option lang-target="right-option-streamer" value="0" ` + (videosJson[i].right === "0" ? `selected` : ``) + `>Streamer</option>
+                        <option lang-target="right-option-moderator" value="1" ` + (videosJson[i].right === "1" ? `selected` : ``) + `>Moderator</option>
+                        <option lang-target="right-option-vip" value="2" ` + (videosJson[i].right === "2" ? `selected` : ``) + `>VIP</option>
+                        <option lang-target="right-option-everyone" value="3" ` + (videosJson[i].right === "3" ? `selected` : ``) + `>Everyone</option>
+                    </select>
                 </div>
                 <div class="col-1">
                     <input class="form-control video-delay" type="text" value="` + videosJson[i].delay + `" />
@@ -279,11 +323,19 @@ $(function(){
     for ( let i = 0; i < soundsJson.length; i++ ) {
         $('#sounds').append(`
             <div class="text-center form-group row align-items-center sound">
-                <div class="col-4">
+                <div class="col-3">
                     <input class="form-control sound-command" type="text" value="` + soundsJson[i].command + `" />
                 </div>
-                <div class="col-5">
+                <div class="col-3">
                     <input class="form-control sound-file-name" type="text" value="` + soundsJson[i].file + `" />
+                </div>
+                <div class="col-3">
+                    <select class="form-control sound-right">
+                        <option lang-target="right-option-streamer" value="0" ` + (soundsJson[i].right === "0" ? `selected` : ``) + `>Streamer</option>
+                        <option lang-target="right-option-moderator" value="1" ` + (soundsJson[i].right === "1" ? `selected` : ``) + `>Moderator</option>
+                        <option lang-target="right-option-vip" value="2" ` + (soundsJson[i].right === "2" ? `selected` : ``) + `>VIP</option>
+                        <option lang-target="right-option-everyone" value="3" ` + (soundsJson[i].right === "3" ? `selected` : ``) + `>Everyone</option>
+                    </select>
                 </div>
                 <div class="col-1">
                     <input class="form-control sound-delay" type="text" value="` + soundsJson[i].delay + `" />
@@ -305,13 +357,21 @@ $(function(){
     for ( let i = 0; i < botCommandsJson.length; i++ ) {
         $('#bot-commands').append(`
             <div class="text-center form-group row align-items-center bot-command">
-                <div class="col-4">
+                <div class="col-3">
                     <input class="form-control bot-command-string" type="text" value="` + botCommandsJson[i].commandString + `" />
                 </div>
-                <div class="col-7">
+                <div class="col-5">
                     <textarea class="form-control bot-command-output" >`
                          + botCommandsJson[i].commandOutput
                     +`</textarea>
+                </div>
+                <div class="col-3">
+                    <select class="form-control bot-command-right">
+                        <option lang-target="right-option-streamer" value="0" ` + (botCommandsJson[i].commandRight === "0" ? `selected` : ``) + `>Streamer</option>
+                        <option lang-target="right-option-moderator" value="1" ` + (botCommandsJson[i].commandRight === "1" ? `selected` : ``) + `>Moderator</option>
+                        <option lang-target="right-option-vip" value="2" ` + (botCommandsJson[i].commandRight === "2" ? `selected` : ``) + `>VIP</option>
+                        <option lang-target="right-option-everyone" value="3" ` + (botCommandsJson[i].commandRight === "3" ? `selected` : ``) + `>Everyone</option>
+                    </select>
                 </div>
                 <div class="col-1">
                     <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>

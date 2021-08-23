@@ -30,6 +30,9 @@ enContentJson = JSON.parse(`
 	"video-file-title"				: "File Name",
 	"video-file-label"				: "File Name",
 	"video-file-legend"				: "Name of the video file you've put in the 'videos' folder.",
+	"video-right-title"				: "Rights",
+	"video-right-label"				: "Rights",
+	"video-right-legend"			: "Who can use this command (Streamer > Moderator > VIP > Everyone)",
 	"video-delay-title"				: "Delay",
 	"video-delay-label"				: "Delay",
 	"video-delay-legend"			: "Minimum delay between two uses of this particular command, in seconds.",
@@ -49,6 +52,9 @@ enContentJson = JSON.parse(`
 	"sound-file-title"				: "File Name",
 	"sound-file-label"				: "File Name",
 	"sound-file-legend"				: "Name of the sound file you've put in the 'sounds' folder.",
+	"sound-right-title"				: "Rights",
+	"sound-right-label"				: "Rights",
+	"sound-right-legend"			: "Who can use this command (Streamer > Moderator > VIP > Everyone)",
 	"sound-delay-title"				: "Delay",
 	"sound-delay-label"				: "Delay",
 	"sound-delay-legend"			: "Minimum delay between two uses of this particular command, in seconds.",
@@ -63,6 +69,13 @@ enContentJson = JSON.parse(`
 	"bot-command-string-legend"		: "Command read after a ! that triggers the bot message.",
 	"bot-command-output-title"		: "Output",
 	"bot-command-output-label"		: "Output",
-	"bot-command-output-legend"		: "Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command.<br>If you want to make multipart commands, just use the same replaceable string inside the Command String and the Command Output. i.e. '$1' or '{a}' etc... ( see pre filled examples )."
+	"bot-command-output-legend"		: "Message the bot will send after the command is used. You can use '{username}' as a variable that will be substituted for the name of the user sending the command.<br>If you want to make multipart commands, just use the same replaceable string inside the Command String and the Command Output. i.e. '$1' or '{a}' etc... ( see pre filled examples ).",
+	"bot-command-right-title"		: "Rights",
+	"bot-command-right-label"		: "Rights",
+	"bot-command-right-legend"		: "Who can use this command (Streamer > Moderator + Streamer > VIP + all previous ones > Everyone)",
+	"right-option-streamer"			: "Streamer",
+	"right-option-moderator"		: "Moderator",
+	"right-option-vip"				: "VIP",
+	"right-option-everyone"			: "Everyone"
 }
 `);
