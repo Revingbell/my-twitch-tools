@@ -11,9 +11,12 @@ class soundQueue {
 
 	add( sound ) {
 		$('#my-sounds').append(`
-					<audio autoplay src="sounds/` + sound.file + `" class='hidden' id="` + sound.command + `">
-					</audio>`);
-		$('#' + sound.command)[0].volume = sound.volume;
+		<div id="` + sound.command + `">
+			<audio autoplay src="sounds/` + sound.file + `" class="hidden" >
+			</audio>
+			<input type="hidden" value="` + sound.delay + `"/>
+		</div>`);
+		$('#' + sound.command + ' audio')[0].volume = sound.volume;
 	}
 
 	/*
@@ -21,13 +24,13 @@ class soundQueue {
 	*/
 	remove( sound ) {
 		setTimeout(function(){
-			let soundDuration = ($('#' + sound.command)[0].duration*1000) - 500;
+			let soundDuration = ($('#' + sound.command + ' audio')[0].duration*1000) - 500;
 
 			setTimeout(this.resume.bind(this),Math.max(this.delay*1000, soundDuration));
 
 			setTimeout(function(){
 				$('#' + sound.command)[0].remove();
-			}, sound.delay * 1000 - soundDuration );
+			}, sound.delay * 1000);
 		}.bind(this),500);
 	}
 
@@ -56,8 +59,24 @@ class soundQueue {
 			if ( $('#'+sound.command).length === 0 ) {
 				this.add(sound);
 				this.pause();
+				this.countdown(sound);
 				this.remove(sound);
 			}
 		}
+	}
+
+	countdown(sound) {
+		let cd = setInterval(function() {
+
+			let delay = $('#' + sound.command + " input").val();
+			delay--;
+
+			if (delay === 0) {
+				clearInterval(cd);
+			}
+
+			$('#' + sound.command + ' input').val(delay);
+
+		}, 1000);
 	}
 }

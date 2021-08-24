@@ -64,8 +64,6 @@ $(function(){
 		/*
 			Find out if this is a command (starting with !), if not do nothing
 		*/
-		console.log(tags);
-
 		if ( /^!.*/.test(message) ) {
 			checkCorrespondance(client, channel, tags, message);
 		}

@@ -11,9 +11,12 @@ class videoQueue {
 
 	add( video ) {
 		$('#my-videos').append(`
-		<video autoplay width="800" height="600" src="videos/` + video.file + `" id="` + video.command + `">
-		</video>`);
-		$('#' + video.command)[0].volume = video.volume;
+		<div id="` + video.command + `">
+			<video autoplay width="800" height="600" src="videos/` + video.file + `">
+			</video>
+			<input type="hidden" value="` + video.delay + `"/>
+		</div>`);
+		$('#' + video.command + ' video')[0].volume = video.volume;
 	}
 
 	/*
@@ -21,7 +24,7 @@ class videoQueue {
 	*/
 	remove( video ) {
 		setTimeout(function(){
-			let videoDuration = ($('#' + video.command)[0].duration*1000) - 500;
+			let videoDuration = ($('#' + video.command + ' video')[0].duration*1000) - 500;
 
 			setTimeout(this.resume.bind(this),Math.max(this.delay*1000, videoDuration));
 
@@ -60,8 +63,23 @@ class videoQueue {
 			if ( $('#'+video.command).length === 0 ) {
 				this.add(video);
 				this.pause();
+				this.countdown(video);
 				this.remove(video);
 			}
 		}
+	}
+
+	countdown(video) {
+		let cd = setInterval(function() {
+			let delay = $('#' + video.command + ' input').val();
+
+			delay--;
+
+			if (delay === 0) {
+				clearInterval(cd);
+			}
+
+			$('#' + video.command + ' input').val(delay);
+		}, 1000);
 	}
 }
