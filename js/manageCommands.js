@@ -67,7 +67,9 @@ function checkVideoCommands ( client, channel, tags, command ) {
 
 			} else if ( botActive ) {
 
-				let output = "This command has a delay of " + $('#'+videosJson[i].command + ' input').val() + " seconds between two uses.";
+				let output = videoDelayMessage
+					.replace(/\{videoDelay\}/g,$('#'+videosJson[i].command + ' input').val())
+					.replace(/\{videoCommand\}/g,videosJson[i].command);
 				client.say(channel, output);
 			}
 
@@ -93,7 +95,9 @@ function checkSoundCommands ( client, channel, tags, command ) {
 
 			} else if ( botActive ) {
 
-				let output = "This command has a delay of " + $('#'+soundsJson[i].command + ' input').val() + " seconds before next use.";
+				let output = soundDelayMessage
+					.replace(/\{soundDelay\}/g,$('#' + soundsJson[i].command + ' input').val())
+					.replace(/\{soundCommand\}/g,soundsJson[i].command);
 				client.say(channel, output);
 			}
 

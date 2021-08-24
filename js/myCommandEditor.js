@@ -15,17 +15,19 @@ function exportFile() {
     let text;
 
     text =
-`var user = "` + $('#twitch-user').val() + `";
+`var channelName = "` + $('#twitch-channel').val() + `";
+var user = "` + $('#twitch-user').val() + `";
 var pwd = "` + $('#twitch-pwd').val() + `";
-var channelName = "` + $('#twitch-channel').val() + `";
 
 var pauseVideos = "` + $('#pause-videos').val() + `";
 var resumeVideos = "` + $('#resume-videos').val() + `";
 var globalVideoDelay = "` + $('#global-video-delay').val() + `";
+var videoDelayMessage = "` + $('#video-delay-message').val() + `";
 
 var pauseSounds = "` + $('#pause-sounds').val() + `";
 var resumeSounds = "` + $('#resume-sounds').val() + `";
 var globalSoundDelay = "` + $('#global-sound-delay').val() + `";
+var soundDelayMessage = "` + $('#sound-delay-message').val() + `";
 
 var displayAllVideo = "` + $('#display-all-video').val() + `";
 var displayAllSound = "` + $('#display-all-sound').val() + `";
@@ -285,6 +287,7 @@ $(function(){
     $('#pause-videos').val(pauseVideos);
     $('#resume-videos').val(resumeVideos);
     $('#global-video-delay').val(globalVideoDelay);
+    $('#video-delay-message').val(videoDelayMessage);
 
     for ( let i = 0; i < videosJson.length; i++ ){
         $('#videos').append(`
@@ -321,6 +324,7 @@ $(function(){
     $('#pause-sounds').val(pauseSounds);
     $('#resume-sounds').val(resumeSounds);
     $('#global-sound-delay').val(globalSoundDelay);
+    $('#sound-delay-message').val(soundDelayMessage);
 
     for ( let i = 0; i < soundsJson.length; i++ ) {
         $('#sounds').append(`
@@ -354,7 +358,9 @@ $(function(){
     /*
         Bot Commands
     */
-    $('#display-all').val(displayAll);
+    $('#display-all-video').val(displayAllVideo);
+    $('#display-all-sound').val(displayAllSound);
+    $('#display-all-bot-command').val(displayAllBotCommand);
 
     for ( let i = 0; i < botCommandsJson.length; i++ ) {
         $('#bot-commands').append(`
