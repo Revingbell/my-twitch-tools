@@ -110,9 +110,17 @@ function checkSoundCommands ( client, channel, tags, command ) {
 function checkBotCommands( client, channel, tags, message ) {
 	let baseCommandString = message.substr(1).split(' ')[0];
 
-	if ( baseCommandString === displayAll ){
+	if ( baseCommandString === displayAllVideo ){
 
-		return manageDisplayAll(client, channel, tags);
+		return manageDisplayAllVideo(client, channel, tags);
+
+	} if ( baseCommandString === displayAllSound ){
+
+		return manageDisplayAllSound(client, channel, tags);
+
+	} if ( baseCommandString === displayAllBotCommand ){
+
+		return manageDisplayAllBotCommand(client, channel, tags);
 
 	} else {
 
@@ -121,26 +129,12 @@ function checkBotCommands( client, channel, tags, message ) {
 }
 
 /*
-	Manage the "display all commands" command
+	Manage the "display all video commands" command
 */
-function manageDisplayAll( client, channel, tags ) {
+function manageDisplayAllVideo( client, channel, tags ) {
 	let output = "";
 
-	if ( tags.badges !== null ) {
-
-		if ( tags.badges.broadcaster === "1" ) {
-
-			client.say(channel, "Command List for the Streamer");
-
-		} else if ( tags.badges.moderator === "1" ) {
-
-			client.say(channel, "Command List for the Moderators");
-
-		} else if ( tags.badges.vip === "1" ) {
-
-			client.say(channel, "Command List for the VIPs");
-		}
-	}
+	sayWhoseCommands(client, channel, tags);
 
 	// Video Message
 	output += "Videos: ";
@@ -164,6 +158,17 @@ function manageDisplayAll( client, channel, tags ) {
 
 	client.say(channel,output);
 
+	return true;
+}
+
+/*
+	Manage the "display all sound commands" command
+*/
+function manageDisplayAllSound( client, channel, tags ) {
+	let output = "";
+
+	sayWhoseCommands(client, channel, tags);
+
 	// Sound Message
 	output = "Sounds: ";
 
@@ -186,8 +191,19 @@ function manageDisplayAll( client, channel, tags ) {
 
 	client.say(channel,output);
 
+	return true;
+}
+
+/*
+	Manage the "display all bot commands" command
+*/
+function manageDisplayAllBotCommand( client, channel, tags ) {
+	let output = "";
+
+	sayWhoseCommands(client, channel, tags);
+
 	// Bot Commands Message
-	output = "Bot Commands: " + displayAll + " | ";
+	output = "Bot Commands: " + displayAllVideo + " | " + displayAllSound + " | " + displayAllBotCommand + " | ";
 
 	for ( var i = 0; i < botCommandsJson.length; i++ ) {
 
@@ -259,6 +275,27 @@ function manageBotCommands( client, channel, tags, message ) {
 	}
 
 	return false;
+}
+
+/*
+	Prints in chat which "profile" of commands are about to be displayed (broadcaster/moderator/vip/everyone)
+*/
+function sayWhoseCommands( client, channel, tags ) {
+	if ( tags.badges !== null ) {
+
+		if ( tags.badges.broadcaster === "1" ) {
+
+			client.say(channel, "Command List for the Streamer");
+
+		} else if ( tags.badges.moderator === "1" ) {
+
+			client.say(channel, "Command List for the Moderators");
+
+		} else if ( tags.badges.vip === "1" ) {
+
+			client.say(channel, "Command List for the VIPs");
+		}
+	}
 }
 
 /*

@@ -27,7 +27,9 @@ var pauseSounds = "` + $('#pause-sounds').val() + `";
 var resumeSounds = "` + $('#resume-sounds').val() + `";
 var globalSoundDelay = "` + $('#global-sound-delay').val() + `";
 
-var displayAll = "` + $('#display-all').val() + `";
+var displayAllVideo = "` + $('#display-all-video').val() + `";
+var displayAllSound = "` + $('#display-all-sound').val() + `";
+var displayAllBotCommand = "` + $('#display-all-bot-command').val() + `";
 
 var videosJson = JSON.parse(\`
 [`;
