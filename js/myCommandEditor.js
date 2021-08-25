@@ -276,41 +276,46 @@ $(function(){
     /*
         Global Parameters
     */
-    $('#twitch-user').val(user);
-    $('#twitch-pwd').val(pwd);
-    $('#twitch-channel').val(channelName);
-
+    typeof(user) !== 'undefined' ? $('#twitch-user').val(user) : "";
+    typeof(pwd) !== 'undefined' ? $('#twitch-pwd').val(pwd) : "";
+    typeof(channelName) !== 'undefined' ? $('#twitch-channel').val(channelName) : "";
 
     /*
         Video Parameters
     */
-    $('#pause-videos').val(pauseVideos);
-    $('#resume-videos').val(resumeVideos);
-    $('#global-video-delay').val(globalVideoDelay);
-    $('#video-delay-message').val(videoDelayMessage);
+    typeof(pauseVideos) !== 'undefined' ? $('#pause-videos').val(pauseVideos) : "";
+    typeof(resumeVideos) !== 'undefined' ? $('#resume-videos').val(resumeVideos) : "";
+    typeof(globalVideoDelay) !== 'undefined' ? $('#global-video-delay').val(globalVideoDelay) : "";
+    typeof(videoDelayMessage) !== 'undefined' ? $('#video-delay-message').val(videoDelayMessage) : "";
 
     for ( let i = 0; i < videosJson.length; i++ ){
+        let command = typeof(videosJson[i].command) !== 'undefined' ? videosJson[i].command : "";
+        let file = typeof(videosJson[i].file) !== 'undefined' ? videosJson[i].file : "";
+        let right = typeof(videosJson[i].right) !== 'undefined' ? videosJson[i].right : "3";
+        let delay = typeof(videosJson[i].delay) !== 'undefined' ? videosJson[i].delay : "60";
+        let volume = typeof(videosJson[i].volume) !== 'undefined' ? videosJson[i].volume : "0.5";
+
         $('#videos').append(`
             <div class="text-center form-group row align-items-center video">
                 <div class="col-3">
-                    <input class="form-control video-command" type="text" value="` + videosJson[i].command + `" />
+                    <input class="form-control video-command" type="text" value="` + command + `" />
                 </div>
                 <div class="col-3">
-                    <input class="form-control video-file-name" type="text" value="` + videosJson[i].file + `" />
+                    <input class="form-control video-file-name" type="text" value="` + file + `" />
                 </div>
                 <div class="col-3">
                     <select class="form-control video-right">
-                        <option lang-target="right-option-streamer" value="0" ` + (videosJson[i].right === "0" ? `selected` : ``) + `>Streamer</option>
-                        <option lang-target="right-option-moderator" value="1" ` + (videosJson[i].right === "1" ? `selected` : ``) + `>Moderator</option>
-                        <option lang-target="right-option-vip" value="2" ` + (videosJson[i].right === "2" ? `selected` : ``) + `>VIP</option>
-                        <option lang-target="right-option-everyone" value="3" ` + (videosJson[i].right === "3" ? `selected` : ``) + `>Everyone</option>
+                        <option lang-target="right-option-streamer" value="0" ` + (right === "0" ? `selected` : ``) + `>Streamer</option>
+                        <option lang-target="right-option-moderator" value="1" ` + (right === "1" ? `selected` : ``) + `>Moderator</option>
+                        <option lang-target="right-option-vip" value="2" ` + (right === "2" ? `selected` : ``) + `>VIP</option>
+                        <option lang-target="right-option-everyone" value="3" ` + (right === "3" ? `selected` : ``) + `>Everyone</option>
                     </select>
                 </div>
                 <div class="col-1">
-                    <input class="form-control video-delay" type="text" value="` + videosJson[i].delay + `" />
+                    <input class="form-control video-delay" type="text" value="` + delay + `" />
                 </div>
                 <div class="col-1">
-                    <input class="form-control video-volume" type="text" value="` + videosJson[i].volume + `" />
+                    <input class="form-control video-volume" type="text" value="` + volume + `" />
                 </div>
                 <div class="col-1">
                     <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
@@ -321,33 +326,39 @@ $(function(){
     /*
         Sound Parameters
     */
-    $('#pause-sounds').val(pauseSounds);
-    $('#resume-sounds').val(resumeSounds);
-    $('#global-sound-delay').val(globalSoundDelay);
-    $('#sound-delay-message').val(soundDelayMessage);
+    typeof(pauseSounds) !== 'undefined' ? $('#pause-sounds').val(pauseSounds) : "";
+    typeof(resumeSounds) !== 'undefined' ? $('#resume-sounds').val(resumeSounds) : "";
+    typeof(globalSoundDelay) !== 'undefined' ? $('#global-sound-delay').val(globalSoundDelay) : "";
+    typeof(soundDelayMessage) !== 'undefined' ? $('#sound-delay-message').val(soundDelayMessage) : "";
 
     for ( let i = 0; i < soundsJson.length; i++ ) {
+        let command = typeof(soundsJson[i].command) !== 'undefined' ? soundsJson[i].command : "";
+        let file = typeof(soundsJson[i].file) !== 'undefined' ? soundsJson[i].file : "";
+        let right = typeof(soundsJson[i].right) !== 'undefined' ? soundsJson[i].right : "3";
+        let delay = typeof(soundsJson[i].delay) !== 'undefined' ? soundsJson[i].delay : "30";
+        let volume = typeof(soundsJson[i].volume) !== 'undefined' ? soundsJson[i].volume : "0.5";
+
         $('#sounds').append(`
             <div class="text-center form-group row align-items-center sound">
                 <div class="col-3">
-                    <input class="form-control sound-command" type="text" value="` + soundsJson[i].command + `" />
+                    <input class="form-control sound-command" type="text" value="` + command + `" />
                 </div>
                 <div class="col-3">
-                    <input class="form-control sound-file-name" type="text" value="` + soundsJson[i].file + `" />
+                    <input class="form-control sound-file-name" type="text" value="` + file + `" />
                 </div>
                 <div class="col-3">
                     <select class="form-control sound-right">
-                        <option lang-target="right-option-streamer" value="0" ` + (soundsJson[i].right === "0" ? `selected` : ``) + `>Streamer</option>
-                        <option lang-target="right-option-moderator" value="1" ` + (soundsJson[i].right === "1" ? `selected` : ``) + `>Moderator</option>
-                        <option lang-target="right-option-vip" value="2" ` + (soundsJson[i].right === "2" ? `selected` : ``) + `>VIP</option>
-                        <option lang-target="right-option-everyone" value="3" ` + (soundsJson[i].right === "3" ? `selected` : ``) + `>Everyone</option>
+                        <option lang-target="right-option-streamer" value="0" ` + (right === "0" ? `selected` : ``) + `>Streamer</option>
+                        <option lang-target="right-option-moderator" value="1" ` + (right === "1" ? `selected` : ``) + `>Moderator</option>
+                        <option lang-target="right-option-vip" value="2" ` + (right === "2" ? `selected` : ``) + `>VIP</option>
+                        <option lang-target="right-option-everyone" value="3" ` + (right === "3" ? `selected` : ``) + `>Everyone</option>
                     </select>
                 </div>
                 <div class="col-1">
-                    <input class="form-control sound-delay" type="text" value="` + soundsJson[i].delay + `" />
+                    <input class="form-control sound-delay" type="text" value="` + delay + `" />
                 </div>
                 <div class="col-1">
-                    <input class="form-control sound-volume" type="text" value="` + soundsJson[i].volume + `" />
+                    <input class="form-control sound-volume" type="text" value="` + volume + `" />
                 </div>
                 <div class="col-1">
                     <button class="btn btn-outline-danger" type="button" onclick="$(this).parent().parent().remove()">-</button>
@@ -358,27 +369,31 @@ $(function(){
     /*
         Bot Commands
     */
-    $('#display-all-video').val(displayAllVideo);
-    $('#display-all-sound').val(displayAllSound);
-    $('#display-all-bot-command').val(displayAllBotCommand);
+    typeof(displayAllVideo) !== 'undefined' ? $('#display-all-video').val(displayAllVideo) : "";
+    typeof(displayAllSound) !== 'undefined' ? $('#display-all-sound').val(displayAllSound) : "";
+    typeof(displayAllBotCommand) !== 'undefined' ? $('#display-all-bot-command').val(displayAllBotCommand) : "";
 
     for ( let i = 0; i < botCommandsJson.length; i++ ) {
+        let commandString = typeof(botCommandsJson[i].commandString) !== 'undefined' ? botCommandsJson[i].commandString : "";
+        let commandOutput = typeof(botCommandsJson[i].commandOutput) !== 'undefined' ? botCommandsJson[i].commandOutput : "";
+        let commandRight = typeof(botCommandsJson[i].commandRight) !== 'undefined' ? botCommandsJson[i].commandRight : "3";
+
         $('#bot-commands').append(`
             <div class="text-center form-group row align-items-center bot-command">
                 <div class="col-3">
-                    <input class="form-control bot-command-string" type="text" value="` + botCommandsJson[i].commandString + `" />
+                    <input class="form-control bot-command-string" type="text" value="` + commandString + `" />
                 </div>
                 <div class="col-5">
                     <textarea class="form-control bot-command-output" >`
-                         + botCommandsJson[i].commandOutput
+                         + commandOutput
                     +`</textarea>
                 </div>
                 <div class="col-3">
                     <select class="form-control bot-command-right">
-                        <option lang-target="right-option-streamer" value="0" ` + (botCommandsJson[i].commandRight === "0" ? `selected` : ``) + `>Streamer</option>
-                        <option lang-target="right-option-moderator" value="1" ` + (botCommandsJson[i].commandRight === "1" ? `selected` : ``) + `>Moderator</option>
-                        <option lang-target="right-option-vip" value="2" ` + (botCommandsJson[i].commandRight === "2" ? `selected` : ``) + `>VIP</option>
-                        <option lang-target="right-option-everyone" value="3" ` + (botCommandsJson[i].commandRight === "3" ? `selected` : ``) + `>Everyone</option>
+                        <option lang-target="right-option-streamer" value="0" ` + (commandRight === "0" ? `selected` : ``) + `>Streamer</option>
+                        <option lang-target="right-option-moderator" value="1" ` + (commandRight === "1" ? `selected` : ``) + `>Moderator</option>
+                        <option lang-target="right-option-vip" value="2" ` + (commandRight === "2" ? `selected` : ``) + `>VIP</option>
+                        <option lang-target="right-option-everyone" value="3" ` + (commandRight === "3" ? `selected` : ``) + `>Everyone</option>
                     </select>
                 </div>
                 <div class="col-1">
