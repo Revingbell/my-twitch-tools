@@ -1,16 +1,16 @@
+var channelName = "revingbell";
 var user = "revingbell";
 var pwd = "";
-var channelName = "revingbell";
 
 var pauseVideos = "pvid";
 var resumeVideos = "rvid";
 var globalVideoDelay = "5";
-var videoDelayMessage = "Il reste encore {videoDelay} secondes avant la prochaine utilisation de la commande {videoCommand}.";
+var videoDelayMessage = "There is still {videoDelay} seconde before the next possible use of the command !{videoCommand}.";
 
 var pauseSounds = "psnd";
 var resumeSounds = "rsnd";
 var globalSoundDelay = "5";
-var soundDelayMessage = "Il reste encore {soundDelay} secondes avant la prochaine utilisation de la commande {soundCommand}.";
+var soundDelayMessage = "There is still {soundDelay} seconde before the next possible use of the command !{soundCommand}.";
 
 var displayAllVideo = "vcmd";
 var displayAllSound = "scmd";

@@ -12,11 +12,11 @@
 
 .messageTime {
 	font-weight: lighter;
-	color: gray;
+	color: rgb(79,57,80);
 }
 
 #my-chat {
-	/*background-color: black;*/ /*if empty background will be transparent*/
+	/*background-color:  	rgb(207, 159, 255,0.8); /*if empty background will be transparent*/
 	color: white;
 	position: absolute;
 	bottom:0;

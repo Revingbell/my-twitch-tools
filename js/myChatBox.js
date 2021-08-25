@@ -72,33 +72,32 @@ $(function(){
 	// For each message do:
 	client.on('message', (channel, tags, message, self) => {
 
-		console.log(tags);
+		if ( !/^!.*/.test(message) ) {
+			let date = new Date(tags["tmi-sent-ts"] * 1);
 
-		let date = new Date(tags["tmi-sent-ts"] * 1);
+			let messageTime = (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
 
-		let messageTime = (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
+			let color = (tags['color'] === null ? "#FF0000" : tags['color']);
 
-		let color = (tags['color'] === null ? "#FF0000" : tags['color']);
+			let printableMessage = substituteEmotes(tags,message);
 
-		let printableMessage = substituteEmotes(tags,message);
+			$('#my-chat').append(`
+					<div class='message' id='${tags["tmi-sent-ts"]}'>
+						<span class='messageTime'>
+				 			${messageTime}
+				 		</span>
+						<span class='name' style='color: ${color} ;'>
+							${tags['display-name']} :
+					 	</span>
+				 		${printableMessage}
+					</div>`
+			);
 
-		$('#my-chat').append(`
-				<div class='message' id='${tags["tmi-sent-ts"]}'>
-					<span class='messageTime'>
-			 			${messageTime}
-			 		</span>
-					<span class='name' style='color: ${color} ;'>
-						${tags['display-name']} :
-				 	</span>
-			 		${printableMessage}
-				</div>`
-		);
-
-		setTimeout(function(){
-			$('#'+tags["tmi-sent-ts"]).fadeOut(1000, function() {
-				$('#' + tags["tmi-sent-ts"]).remove();
-			});
-		}, 60000);
-
+			setTimeout(function(){
+				$('#'+tags["tmi-sent-ts"]).fadeOut(1000, function() {
+					$('#' + tags["tmi-sent-ts"]).remove();
+				});
+			}, 60000);
+		}
 	});
 });
