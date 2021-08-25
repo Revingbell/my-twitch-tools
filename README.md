@@ -6,7 +6,7 @@ My Twich Command Tool
 
 # Index
 - [Index](#index)
-- [Usage](#utilisation)
+- [Usage](#usage)
   - [Add Files](#add-video-and-sound-files)
   - [Parametrize the program](#parametrize-the-program)
     - [Global Parameters](#global-parameters)
