@@ -8,9 +8,16 @@
 - [Utilisation](#utilisation)
   - [Ajouter des fichiers](#ajouter-des-fichiers-vidéo-et-audio)
   - [Paramétrer le programme](#paramétrer-le-programme)
+    - [Paramètres Globaux](#paramètres-globaux)
+    - [Paramètres Vidéo](#paramètres-vidéo)
+    - [Paramètres Son](#paramètres-son)
+    - [Commandes du bot](#commandes-du-bot)
+    - [Langage](#langage)
+    - [Exporter](#exporter)
 - [Ajouter à OBS](#ajouter-à-obs)
     - [Command Tools](#command-tools)
     - [Chat Box](#chat-box)
+
 # Utilisation
 
 ## Ajouter des fichiers vidéo et audio
